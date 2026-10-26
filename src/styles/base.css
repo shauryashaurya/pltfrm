@@ -1,0 +1,41 @@
+/* Base elements and form controls. Sharp corners throughout: no border-radius anywhere */
+* { box-sizing: border-box; border-radius: 0; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--text); font: var(--fs-base)/1.55 var(--font); font-optical-sizing: auto; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; padding-bottom: 28px; }
+a { color: var(--link); }
+h1, h2, h3 { line-height: 1.2; text-wrap: balance; }
+h2 { font-size: var(--fs-lg); font-weight: 850; letter-spacing: -.018em; }
+h3 { font-size: var(--fs-md); font-weight: 800; letter-spacing: -.008em; }
+p { text-wrap: pretty; }
+/* Figures line up in tables, tiles and charts */
+.num, .metric b, .coverage-kpi b, .tco-summary b, .value-grid b, .diff-summary b, .exec-score, .rank .v { font-variant-numeric: tabular-nums lining-nums; }
+h3.gap { margin-top: 18px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+[hidden] { display: none !important; }
+.hide { display: none !important; }
+small { color: var(--muted); }
+
+input, select, textarea, button { font: inherit; color: inherit; }
+/* Keep every element on the sans-serif stack, including ones browsers default to monospace */
+code, pre, kbd, samp, svg text, dialog { font-family: var(--font); }
+input, select, textarea { width: 100%; border: 1px solid var(--line-strong); padding: 8px 10px; background: var(--surface); color: var(--text); }
+textarea { min-height: 70px; resize: vertical; }
+input[type=number] { text-align: right; }
+input[type=checkbox] { width: auto; accent-color: var(--s1); }
+input:disabled { opacity: .7; }
+
+/* Square slider: flat track, square thumb */
+input[type=range] { padding: 0; border: 0; background: transparent; appearance: none; -webkit-appearance: none; height: 24px; cursor: pointer; }
+input[type=range]::-webkit-slider-runnable-track { height: 8px; background: var(--track); }
+input[type=range]::-moz-range-track { height: 8px; background: var(--track); }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; margin-top: -5px; background: var(--s1); border: 2px solid var(--surface); box-shadow: 0 0 0 1px var(--line-strong); }
+input[type=range]::-moz-range-thumb { width: 14px; height: 14px; background: var(--s1); border: 2px solid var(--surface); box-shadow: 0 0 0 1px var(--line-strong); }
+
+table { border-collapse: separate; border-spacing: 0; width: 100%; background: var(--surface); font-size: 13px; }
+th, td { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); padding: 7px 9px; vertical-align: top; }
+th:first-child, td:first-child { border-left: 1px solid var(--line); }
+thead th, table > tr:first-child > th { border-top: 1px solid var(--line); }
+th { background: var(--surface-3); color: var(--text); position: sticky; top: 0; z-index: 2; text-align: left; font-weight: 800; font-size: 12.5px; letter-spacing: .01em; }
+tr:nth-child(even) td { background: var(--surface-2); }
+
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }

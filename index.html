@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PLTFRM: Assess Your Enterprise Data Ecosystem</title>
+<meta name="description" content="Configurable comparison of enterprise data, ontology and agentic platforms for strategy and build vs buy decisions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200..1000&display=swap" rel="stylesheet">
+<script>
+// Apply the saved or system theme before first paint to avoid a flash
+(function () { var t = null; try { t = localStorage.getItem('playbookTheme'); } catch (e) {} if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.setAttribute('data-theme', t); })();
+</script>
+</head>
+<body data-mode="reader">
+
+<header class="topbar">
+<div class="wrap">
+<div class="brand">
+<h1 class="brand-title" id="title"></h1>
+</div>
+<div class="top-actions">
+<button class="btn ghost" id="themeToggle" type="button" aria-pressed="false">Dark theme</button>
+<button class="btn editor-only" type="button" onclick="PB.saveLocal()">Save</button>
+<details class="menu" id="exportMenu">
+<summary class="btn">Export</summary>
+<div class="menu-list">
+<button type="button" onclick="PB.printFullReport()">Print full report / PDF</button>
+<button type="button" onclick="PB.exportMarkdown()">Export full Markdown report</button>
+<button type="button" onclick="PB.exportResultsCSV()">Export results CSV</button>
+<hr>
+<button type="button" onclick="PB.exportMustHavesCSV()">Export must-haves CSV</button>
+<button type="button" class="editor-only" onclick="PB.exportMethodologyCSV()">Export methodology CSV</button>
+<button type="button" class="editor-only" onclick="PB.exportValidationCSV()">Export validation CSV</button>
+<button type="button" onclick="PB.exportSourcesCSV()">Export source register</button>
+<hr>
+<button type="button" onclick="PB.exportConfig()">Export JSON scenario</button>
+<button type="button" class="editor-only" onclick="document.getElementById('importFile').click()">Import JSON scenario</button>
+</div>
+</details>
+<button class="btn primary reader-only" type="button" onclick="PB.startEditing()">Edit study</button>
+<button class="btn primary editor-only" type="button" onclick="PB.stopEditing()">Done editing</button>
+</div>
+</div>
+</header>
+
+<nav class="readernav reader-only" aria-label="Report sections">
+<div class="wrap">
+<button class="tab" type="button" data-id="report" onclick="PB.showReader('report')">Report</button>
+<button class="tab" type="button" data-id="comparison" onclick="PB.showReader('comparison')">Product comparison</button>
+<button class="tab" type="button" data-id="mustHaves" onclick="PB.showReader('mustHaves')">Must-haves</button>
+<button class="tab" type="button" data-id="costModel" onclick="PB.showReader('costModel')">Cost, TCO and value</button>
+<button class="tab" type="button" data-id="methodology" onclick="PB.showReader('methodology')">Methodology</button>
+<button class="tab" type="button" data-id="validation" onclick="PB.showReader('validation')">Validation plan</button>
+<button class="tab" type="button" data-id="sources" onclick="PB.showReader('sources')">Sources</button>
+</div>
+</nav>
+
+<nav class="stepper editor-only" aria-label="Study steps">
+<ol>
+<li><button class="step-link" type="button" data-step="1" onclick="PB.showStep(1)"><span class="dot">1</span><span><span class="lbl">Frame scenario</span><span class="st" id="st-1"></span></span></button></li>
+<li><button class="step-link" type="button" data-step="2" onclick="PB.showStep(2)"><span class="dot">2</span><span><span class="lbl">Choose products</span><span class="st" id="st-2"></span></span></button></li>
+<li><button class="step-link" type="button" data-step="3" onclick="PB.showStep(3)"><span class="dot">3</span><span><span class="lbl">Set weights</span><span class="st" id="st-3"></span></span></button></li>
+<li><button class="step-link" type="button" data-step="4" onclick="PB.showStep(4)"><span class="dot">4</span><span><span class="lbl">Scores and evidence</span><span class="st" id="st-4"></span></span></button></li>
+<li><button class="step-link" type="button" data-step="5" onclick="PB.showStep(5)"><span class="dot">5</span><span><span class="lbl">Must-haves, cost, risk</span><span class="st" id="st-5"></span></span></button></li>
+<li><button class="step-link" type="button" data-step="6" onclick="PB.showStep(6)"><span class="dot">6</span><span><span class="lbl">Review and report</span><span class="st" id="st-6"></span></span></button></li>
+</ol>
+</nav>
+
+<div class="workspace">
+<main class="stage">
+
+<!-- Reader mode: panels are moved here by the router -->
+<section class="reader reader-only" aria-label="Report">
+<div id="readerHost"></div>
+</section>
+
+<!-- Editor mode: six guided steps; [data-slot] marks where each panel lives -->
+<section class="step editor-only" data-step="1" aria-labelledby="h-1" hidden>
+<div class="step-head">
+<div class="eyebrow">Step 1 of 6</div>
+<h2 id="h-1">What decision are you making?</h2>
+<p>Name the scenario and choose how scores combine. Everything downstream recalculates live.</p>
+</div>
+<div class="cols">
+<div class="card">
+<h3>About this study</h3>
+<div class="form-row stack"><label for="studyTitle">Study title</label><input id="studyTitle"></div>
+<div class="form-row stack"><label for="scenarioName">Scenario name</label><input id="scenarioName"></div>
+<div class="form-row stack"><label for="industry">Industry/domain</label><input id="industry"></div>
+<div class="form-row stack"><label for="priorityUseCases">Priority use cases</label><textarea id="priorityUseCases"></textarea></div>
+</div>
+<div class="card">
+<h3>Scoring rules</h3>
+<div class="explain"><b>Start here.</b> Choose the composite method, unknown-score treatment and shortlist threshold. The geometric method limits compensation between dimensions; the arithmetic method permits more compensation. Save or export every approved scenario for reproducibility.</div>
+<div class="form-row"><label for="method">Composite method</label><select id="method"><option value="geometric">Weighted geometric mean</option><option value="arithmetic">Weighted arithmetic mean</option></select></div>
+<div class="form-row"><label for="unknown">Unknown scores</label><select id="unknown"><option value="zero">Treat as 0</option><option value="exclude">Exclude and normalize</option></select></div>
+<div class="form-row"><label for="threshold">Shortlist threshold</label><input id="threshold" type="number" min="0" max="100" step="1"></div>
+<label><input id="riskToggle" type="checkbox"> Show evidence-risk-adjusted values</label>
+<h3 class="gap">Scenario files</h3>
+<div class="buttons">
+<button class="btn" type="button" onclick="PB.loadLocal()">Load saved</button>
+<label class="btn">Import JSON<input class="hide" type="file" id="importFile" accept="application/json"></label>
+<button class="btn danger" type="button" onclick="PB.resetAll()">Reset to baseline</button>
+</div>
+<div class="tiny">JSON preserves products, scores, weights, must-haves and settings. All processing stays in this browser. To publish changes for every reader, replace src/data/seed.json with an exported JSON and redeploy.</div>
+</div>
+</div>
+<div class="step-foot"><span></span><button class="btn primary" type="button" onclick="PB.showStep(2)">Next: Choose products</button></div>
+</section>
+
+<section class="step editor-only" data-step="2" aria-labelledby="h-2" hidden>
+<div class="step-head">
+<div class="eyebrow">Step 2 of 6</div>
+<h2 id="h-2">Which products are in the running?</h2>
+<p>Include or exclude offerings, set evidence confidence, and keep each product's role and boundary next to its numbers.</p>
+</div>
+<div class="card">
+<h3>Products</h3>
+<div class="explain"><b>Operation.</b> Include or exclude products, set evidence confidence, or add a new product. New products start with unknown scores and confidence E until evidence is entered.</div>
+<input class="search" id="productSearch" placeholder="Filter products" aria-label="Filter products">
+<div id="productList"></div>
+<details class="add-product">
+<summary>Add product</summary>
+<div class="product-form">
+<input id="newName" placeholder="Product name" aria-label="Product name">
+<input id="newCategory" placeholder="Category" aria-label="Category">
+<input id="newRole" placeholder="Primary role" aria-label="Primary role">
+<input id="newFit" placeholder="Representative fit" aria-label="Representative fit">
+<input class="wide" id="newBoundary" placeholder="Boundary / verification need" aria-label="Boundary or verification need">
+<textarea class="wide" id="newNotes" placeholder="Evaluator notes" aria-label="Evaluator notes"></textarea>
+</div>
+<button class="btn primary" type="button" onclick="PB.addProduct()">Add product</button>
+</details>
+</div>
+<div class="subnav">
+<button class="tab" type="button" data-id="productMeta" onclick="PB.showStep(2,'productMeta')">Product context</button>
+<button class="tab" type="button" data-id="comparison" onclick="PB.showStep(2,'comparison')">Product comparison</button>
+</div>
+<div data-slot="productMeta"><section id="productMeta" class="panel"></section></div>
+<div data-slot="comparison"><section id="comparison" class="panel"></section></div>
+<div class="step-foot"><button class="btn" type="button" onclick="PB.showStep(1)">Back: Frame scenario</button><button class="btn primary" type="button" onclick="PB.showStep(3)">Next: Set weights</button></div>
+</section>
+
+<section class="step editor-only" data-step="3" aria-labelledby="h-3" hidden>
+<div class="step-head">
+<div class="eyebrow">Step 3 of 6</div>
+<h2 id="h-3">How much does each dimension matter?</h2>
+<p>Enter relative priorities. They normalize automatically, and the live ranking updates as you move them. Every finished change can be undone.</p>
+</div>
+<div id="weightsPanel">
+<div class="card toolbar-card">
+<div class="toolbar">
+<button class="btn" id="undoWeights" type="button" disabled>Undo</button>
+<button class="btn" id="redoWeights" type="button" disabled>Redo</button>
+<span class="toolbar-sep"></span>
+<label for="weightPreset" class="toolbar-label">Preset</label>
+<select id="weightPreset"></select>
+<button class="btn" id="applyPreset" type="button">Apply preset</button>
+</div>
+</div>
+<div class="card">
+<h3>Dimension weights</h3>
+<div class="explain"><b>Cross-enterprise default.</b> Technical and enterprise readiness 20; business/platform coverage 20; AI and agentic applicability 12; delivery and operating economics 16; domain/use-case fit 24; adoption/value realization 8. Domain fit and platform breadth carry the most weight because this scenario needs a platform that reaches beyond one business domain. A single-domain preset (22/17/13/20/18/10) puts more weight on technical readiness and economics. Enter relative priorities; calculations normalize automatically.</div>
+<div id="dimWeights"></div>
+<div id="dimTotal" class="weight-total"></div>
+</div>
+<div class="card">
+<h3>Criterion weights</h3>
+<div class="explain"><b>How the defaults were set.</b> Technical, AI, operating-economics, domain-fit and adoption/value criteria use explicit priorities totaling 100%. Business criteria began as relative points: core ontology, integration and control domains = 10; major platform domains = 7; supporting domains = 4. Normalizing those points produces values such as 11.111% and 4.444%; the decimals are allocation results, not measurement precision. The same rubric appears in <b>Methodology</b>.</div>
+<div class="form-row"><label for="weightDimension">Dimension</label>
+<select id="weightDimension">
+<option value="technical">Technical &amp; enterprise</option>
+<option value="business">Business/platform</option>
+<option value="ai">AI &amp; agentic</option>
+<option value="economics">Delivery &amp; operating economics</option>
+<option value="domain">Domain &amp; use-case fit</option>
+<option value="adoption">Adoption &amp; value realization</option>
+</select></div>
+<div id="criteriaWeights"></div>
+</div>
+</div>
+<div class="step-foot"><button class="btn" type="button" onclick="PB.showStep(2)">Back: Choose products</button><button class="btn primary" type="button" onclick="PB.showStep(4)">Next: Scores and evidence</button></div>
+</section>
+
+<section class="step editor-only" data-step="4" aria-labelledby="h-4" hidden>
+<div class="step-head">
+<div class="eyebrow">Step 4 of 6</div>
+<h2 id="h-4">Is every score backed by evidence?</h2>
+<p>Replace placeholder baselines with your own evidence, then plan how each claim will be validated.</p>
+</div>
+<div class="subnav">
+<button class="tab" type="button" data-id="scores" onclick="PB.showStep(4,'scores')">Edit scores</button>
+<button class="tab" type="button" data-id="validation" onclick="PB.showStep(4,'validation')">Validation plan</button>
+<button class="tab" type="button" data-id="sources" onclick="PB.showStep(4,'sources')">Sources</button>
+</div>
+<div data-slot="scores"><section id="scores" class="panel"></section></div>
+<div data-slot="validation"><section id="validation" class="panel"></section></div>
+<div data-slot="sources"><section id="sources" class="panel"></section></div>
+<div class="step-foot"><button class="btn" type="button" onclick="PB.showStep(3)">Back: Set weights</button><button class="btn primary" type="button" onclick="PB.showStep(5)">Next: Must-haves, cost, risk</button></div>
+</section>
+
+<section class="step editor-only" data-step="5" aria-labelledby="h-5" hidden>
+<div class="step-head">
+<div class="eyebrow">Step 5 of 6</div>
+<h2 id="h-5">Does each product meet the must-haves, and what will it cost?</h2>
+<p>Record whether each non-negotiable requirement is met, model build vs buy costs, and capture delivery risk separately from capability.</p>
+</div>
+<div class="subnav">
+<button class="tab" type="button" data-id="mustHaves" onclick="PB.showStep(5,'mustHaves')">Must-haves</button>
+<button class="tab" type="button" data-id="costModel" onclick="PB.showStep(5,'costModel')">Cost, TCO and value</button>
+<button class="tab" type="button" data-id="risk" onclick="PB.showStep(5,'risk')">Risk and readiness</button>
+</div>
+<div data-slot="mustHaves"><section id="mustHaves" class="panel"></section></div>
+<div data-slot="costModel"><section id="costModel" class="panel"></section></div>
+<div data-slot="risk"><section id="risk" class="panel"></section></div>
+<div class="step-foot"><button class="btn" type="button" onclick="PB.showStep(4)">Back: Scores and evidence</button><button class="btn primary" type="button" onclick="PB.showStep(6,'report')">Next: Review and report</button></div>
+</section>
+
+<section class="step editor-only" data-step="6" aria-labelledby="h-6" hidden>
+<div class="step-head">
+<div class="eyebrow">Step 6 of 6</div>
+<h2 id="h-6">Review the result and share it</h2>
+<p>This is exactly what readers see. Export or print it when the open items are resolved.</p>
+</div>
+<div class="subnav">
+<button class="tab" type="button" data-id="report" onclick="PB.showStep(6,'report')">Live report</button>
+<button class="tab" type="button" data-id="methodology" onclick="PB.showStep(6,'methodology')">Methodology</button>
+</div>
+<div data-slot="report"><section id="report" class="panel"></section></div>
+<div data-slot="methodology"><section id="methodology" class="panel"></section></div>
+<div class="step-foot"><button class="btn" type="button" onclick="PB.showStep(5)">Back: Must-haves, cost, risk</button><span></span></div>
+</section>
+
+</main>
+
+<aside class="rail editor-only" aria-label="Live result">
+<div class="card">
+<h2>Live ranking</h2>
+<div id="railRank"></div>
+</div>
+<div class="card">
+<h2>Report readiness</h2>
+<div id="railReady"></div>
+</div>
+</aside>
+</div>
+
+<footer class="site-foot">PLTFRM | &copy; 2026 Shaurya Agarwal</footer>
+
+<div id="tooltip" class="tooltip"></div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<dialog id="appDialog" class="dialog" aria-labelledby="dlgTitle">
+<form id="dlgForm" method="dialog">
+<h2 id="dlgTitle"></h2>
+<p id="dlgMessage"></p>
+<div id="dlgInputRow" class="form-row stack" hidden><label for="dlgInput">Passphrase</label><input id="dlgInput" type="password" autocomplete="current-password"></div>
+<div class="dialog-actions"><button class="btn" id="dlgCancel" type="button">Cancel</button><button class="btn primary" id="dlgOk" type="submit">OK</button></div>
+</form>
+</dialog>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

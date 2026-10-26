@@ -1,0 +1,21 @@
+/* Print/PDF: only the live report, always in the light palette */
+/* Attribution at the foot of every printed page (same text as EXPORT_FOOTER in config.js) */
+@page {
+  margin-bottom: 16mm;
+  @bottom-center { content: "PLTFRM | \00A9  2026 Shaurya Agarwal"; font: 8pt "Nunito Sans", system-ui, sans-serif; color: #555; }
+}
+@media print {
+  :root, :root[data-theme="dark"] { --bg: #fff; --surface: #fff; --surface-2: #f6f3ee; --surface-3: #eee8df; --line: #d9cfc1; --text: #222; --muted: #555; color-scheme: light; }
+  body { background: #fff; font-size: 10px; padding: 0; }
+  .topbar, .readernav, .stepper, .rail, .subnav, .step-head, .step-foot, .no-print, .viz-controls, .gate-toolbar, .gate-actions, .site-foot, .toast, .tooltip, .ec-tooltip { display: none !important; }
+  .workspace { display: block; padding: 0; }
+  .panel { display: none !important; }
+  #report.panel { display: block !important; }
+  .step { display: none !important; }
+  .step:has(#report) { display: block !important; }
+  .card { break-inside: auto; }
+  .echart, .insight { break-inside: avoid; }
+  th { position: static; }
+  .matrix-wrap { max-height: none !important; overflow: visible !important; }
+  .print-break { break-before: page; }
+}

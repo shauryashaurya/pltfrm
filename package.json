@@ -1,0 +1,18 @@
+{
+  "name": "pltfrm",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "hash-passphrase": "node scripts/hash-passphrase.mjs"
+  },
+  "devDependencies": {
+    "vite": "^8.3.5"
+  },
+  "dependencies": {
+    "echarts": "^6.1.0"
+  }
+}
