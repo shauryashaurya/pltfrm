@@ -15,14 +15,6 @@
   <img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="Apache 2.0 license" />
 </p>
 
-<p>
-  <a href="#-how-it-works">How it works</a> ·
-  <a href="#-run-locally">Run locally</a> ·
-  <a href="#-deploy-to-github-pages">Deploy</a> ·
-  <a href="#-editor-passphrase">Passphrase</a> ·
-  <a href="#-code-map">Code map</a>
-</p>
-
 </div>
 
 ---
