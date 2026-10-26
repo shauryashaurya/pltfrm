@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200..1000&display=swap" rel="stylesheet">
 <script>
-// Apply the saved or system theme before first paint to avoid a flash
-(function () { var t = null; try { t = localStorage.getItem('playbookTheme'); } catch (e) {} if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.setAttribute('data-theme', t); })();
+// Apply the saved theme (light by default) before first paint to avoid a flash
+(function () { var t = null; try { t = localStorage.getItem('playbookTheme'); } catch (e) {} if (t !== 'dark') t = 'light'; document.documentElement.setAttribute('data-theme', t); })();
 </script>
 </head>
 <body data-mode="reader">
@@ -21,7 +21,7 @@
 <h1 class="brand-title" id="title"></h1>
 </div>
 <div class="top-actions">
-<button class="btn ghost" id="themeToggle" type="button" aria-pressed="false">Dark theme</button>
+<button class="btn ghost icon" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark theme" title="Switch to dark theme"></button>
 <button class="btn editor-only" type="button" onclick="PB.saveLocal()">Save</button>
 <details class="menu" id="exportMenu">
 <summary class="btn">Export</summary>

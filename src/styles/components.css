@@ -7,6 +7,9 @@
 .btn.danger { background: var(--bad-bg); border-color: var(--bad-bg); color: var(--bad-text); }
 .btn.ghost { border-color: transparent; background: transparent; }
 .btn.small { min-height: 32px; padding: 0 10px; font-size: 13px; }
+.btn.icon { min-height: 32px; width: 32px; padding: 0; color: var(--muted); }
+.btn.icon:hover:not(:disabled) { color: var(--text); }
+.btn.icon svg { width: 16px; height: 16px; }
 .buttons { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
 .linkish { border: 0; background: transparent; padding: 0; color: var(--link); text-decoration: underline; cursor: pointer; font-weight: 600; }
 

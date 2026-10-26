@@ -1,4 +1,4 @@
-/* Design tokens. Muted light-warm is the base; cool-dark applies via the OS setting or the explicit toggle */
+/* Design tokens. Muted light-warm is the base; cool-dark applies only via the explicit toggle */
 :root {
   --bg: #F8F6F2; --surface: #FFFEFC; --surface-2: #F3F0EB; --surface-3: #EAE6DF;
   --line: #E3DED6; --line-strong: #C9C2B8; --text: #3A3330; --muted: #6B5F57;
@@ -17,24 +17,6 @@
   --fs-xs: 11px; --fs-sm: 13px; --fs-base: 15px; --fs-md: 17px; --fs-lg: 23px; --fs-xl: 30px;
   --accent: var(--s1);
   color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #171E2B; --surface: #1F2837; --surface-2: #273246; --surface-3: #2F3B52;
-    --line: #36435A; --line-strong: #4B5B78; --text: #E6EAF2; --muted: #A7B2C5;
-    --link: #A9CCF2; --focus: #9CC3EE;
-    --primary: #A9BFD6; --primary-hover: #BACCDF; --primary-text: #142235;
-    --good-bg: #2B3A31; --good-text: #A8DDB8; --warn-bg: #3D3627; --warn-text: #F2D59A;
-    --bad-bg: #413031; --bad-text: #F2B3AC; --info-bg: #33314A; --info-text: #CDBFF2;
-    --c-blue: #8FA8C3; --c-green: #8FB39B; --c-amber: #C9B381; --c-gray: #6E7C93; --c-red: #C49D98;
-    --track: #2C374B; --tip-bg: #E6EAF2; --tip-text: #171E2B;
-    --s1: #9DB4D0; --s2: #D4B099; --s3: #A0C1AB; --s4: #B5ABD1; --s5: #CDA8B3; --s6: #98BDBD; --s7: #B0A99F;
-    --step1: #D9C5B8; --step2: #C0D3C6; --step3: #C1D0E0; --step4: #CBC5DD; --step5: #D8CCA8; --step6: #D6C2CB;
-    --step-ink: #1B2230;
-    --shadow: 0 1px 2px rgba(0, 0, 0, .25), 0 6px 18px rgba(0, 0, 0, .18);
-    color-scheme: dark;
-  }
 }
 
 :root[data-theme="dark"] {
