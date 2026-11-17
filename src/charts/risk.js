@@ -1,60 +1,76 @@
-// Risk, readiness and value views: capability-vs-risk scatter, per-product risk matrix, buyer readiness and schedule/value bars
+// Risk, readiness and value views: capability-vs-risk scatter, sortable per-product risk table, buyer readiness and schedule/value bars
 import { state } from '../core/state.js';
-import { esc, n, money } from '../core/format.js';
-import { benefits, buyerReadinessScore, displayValue, riskScore, RISK_MEASURES } from '../core/scoring.js';
-import { chartSlot, base, valueAxis, categoryAxis } from './echarts.js';
-import { shortLabel } from './scatter.js';
+import { esc, enc, n, money } from '../core/format.js';
+import { benefits, buyerReadinessScore, displayValue, riskScore, RISK_MEASURES, productOptions } from '../core/scoring.js';
+import { RISK_COLUMNS, riskRows } from '../core/analysis.js';
+import { rerender } from '../core/registry.js';
+import { expose } from '../core/actions.js';
+import { chartSlot, base, valueAxis, categoryAxis, scaledAxis } from './echarts.js';
+import { shortLabel, scaledValueAxis, scaleNote } from './scatter.js';
 
 const level = v => v >= 4 ? 'high' : v >= 2.5 ? 'med' : 'low';
-const levelColor = (t, v) => ({ low: t.green, med: t.amber, high: t.red })[level(v)];
 const names = list => list.map(r => r.name);
 
 // Hover text for one product's risk overlay
 function riskTip(r) {
   const k = r.risk, months = +k.p50Months ? `<br>Delivery P50/P90 ${n(k.p50Months)}/${n(k.p90Months || k.p50Months)} months` : '';
-  return `<b>${esc(r.name)}</b><br>6D ${n(displayValue(r))}<br>Delivery uncertainty ${n(+k.deliveryUncertainty || 0)}<br>Concentration/lock-in ${n(+k.concentrationRisk || 0)}<br>Buyer-readiness dependency ${n(+k.buyerReadinessDependency || 0)}<br>Combined risk ${n(riskScore(r, 'combined'))}${months}${k.notes ? '<br>' + esc(k.notes) : ''}`;
+  return `<b>${esc(r.name)}</b><br>Composite ${n(displayValue(r))}<br>Delivery uncertainty ${n(+k.deliveryUncertainty || 0)}<br>Concentration/lock-in ${n(+k.concentrationRisk || 0)}<br>Buyer-readiness dependency ${n(+k.buyerReadinessDependency || 0)}<br>Combined risk ${n(riskScore(r, 'combined'))}${months}${k.notes ? '<br>' + esc(k.notes) : ''}`;
 }
 
 // Capability (x) against the chosen risk measure (y, low risk at the top); top-right is the strongest, safest position
 export function riskScatter(rows) {
-  const measure = state.settings.riskMeasure || 'combined', chosen = rows.slice(0, 24), th = +state.settings.shortlistThreshold || 0;
-  // Risk values are often whole numbers, so products land on the same spot; fan exact duplicates slightly so each stays hoverable
-  const seen = {};
-  const pts = chosen.map(r => { const x = displayValue(r), y = riskScore(r, measure), k = `${x.toFixed(0)}|${y.toFixed(2)}`; seen[k] = (seen[k] || 0) + 1; return { r, x, y, k, nth: seen[k] - 1 }; });
-  pts.forEach(p => { const tot = seen[p.k]; p.x += (p.nth - (tot - 1) / 2) * 0.7; });
+  const s = state.settings, measure = s.riskMeasure || 'combined', chosen = rows.slice(0, 24), th = +s.shortlistThreshold || 0, mode = s.scaleRisk || 'fit';
+  const raw = chosen.map(r => ({ r, x: displayValue(r), y: riskScore(r, measure) }));
+  const sx = scaledAxis(raw.map(p => p.x), mode, [0, 100]), sy = scaledAxis(raw.map(p => p.y), mode, [0, 5]);
+  // Risk values are often whole numbers, so products land on the same spot; fan exact duplicates sideways so each stays hoverable
+  const seen = {}, xSpan = (sx.axis.max - sx.axis.min) || 100;
+  const pts = raw.map(p => { const x = sx.map(p.x), y = sy.map(p.y), k = `${x.toFixed(1)}|${y.toFixed(2)}`; seen[k] = (seen[k] || 0) + 1; return { ...p, px: x, py: y, k, nth: seen[k] - 1 }; });
+  pts.forEach(p => { const tot = seen[p.k]; p.px += (p.nth - (tot - 1) / 2) * xSpan * .012; });
+  // Reference lines only where they are meaningful on the chosen scale
+  const lines = mode === 'rank' ? [] : [{ xAxis: th }, { yAxis: 2.5 }].filter(l => l.xAxis === undefined ? l.yAxis >= sy.axis.min && l.yAxis <= sy.axis.max : l.xAxis >= sx.axis.min && l.xAxis <= sx.axis.max);
   const corners = [['Weaker, lower risk', { left: 72, top: 26 }], ['Strong, lower risk', { right: 36, top: 26 }], ['Weaker, higher risk', { left: 72, bottom: 66 }], ['Strong, higher risk', { right: 36, bottom: 66 }]];
   const build = t => base(t, {
     grid: { left: 64, right: 28, top: 20, bottom: 58 },
-    xAxis: valueAxis(t, { min: 0, max: 100, interval: 25, name: `${state.settings.showEvidenceAdjusted ? 'Evidence-adjusted' : 'Raw'} 6D score →`, nameLocation: 'middle', nameGap: 34 }),
-    yAxis: valueAxis(t, { min: 0, max: 5, interval: 1, inverse: true, name: `${RISK_MEASURES[measure]} (0 low, top)`, nameLocation: 'middle', nameGap: 36 }),
+    xAxis: scaledValueAxis(t, sx, { name: `${s.showEvidenceAdjusted ? 'Evidence-adjusted' : 'Raw'} composite →`, nameLocation: 'middle', nameGap: 34 }),
+    yAxis: scaledValueAxis(t, sy, { inverse: true, name: `${RISK_MEASURES[measure]} (low at top)`, nameLocation: 'middle', nameGap: 40 }),
     tooltip: { trigger: 'item', formatter: p => p.seriesType === 'scatter' ? riskTip(pts[p.dataIndex].r) : '' },
     graphic: corners.map(([text, pos]) => ({ type: 'text', ...pos, silent: true, style: { text, fill: t.muted, fontSize: 11 } })),
     series: [{
       type: 'scatter', symbolSize: 13,
-      data: pts.map((p, i) => ({ value: [+p.x.toFixed(2), +p.y.toFixed(2)], itemStyle: { color: t.series[i % t.series.length], opacity: .9, borderColor: t.surface, borderWidth: 1.5 } })),
+      data: pts.map((p, i) => ({ value: [+p.px.toFixed(2), +p.py.toFixed(2)], itemStyle: { color: t.series[i % t.series.length], opacity: .9, borderColor: t.surface, borderWidth: 1.5 } })),
       label: { show: true, position: 'right', distance: 6, formatter: p => shortLabel(pts[p.dataIndex].r.name), color: t.text, fontSize: 11, textBorderColor: t.surface, textBorderWidth: 3 },
       labelLayout: { hideOverlap: true, moveOverlap: 'shiftY' },
       emphasis: { scale: 1.3, label: { show: true, fontWeight: 800 } },
-      markLine: { silent: true, symbol: 'none', label: { show: false }, lineStyle: { color: t.lineStrong, type: 'dashed', width: 1 }, data: [{ xAxis: th }, { yAxis: 2.5 }] }
+      markLine: { silent: true, symbol: 'none', label: { show: false }, lineStyle: { color: t.lineStrong, type: 'dashed', width: 1 }, data: lines }
     }]
   });
-  return `${chartSlot('risk-scatter', build, 420)}<div class="chart-note">The vertical line is the shortlist threshold (${n(th)}); the horizontal line is moderate risk (2.5). Crowded labels are hidden; hover any marker for all three risk values and notes.</div>`;
+  const notes = [mode === 'rank' ? '' : `Dashed lines: shortlist threshold (${n(th)}) and moderate risk (2.5), where in range.`, scaleNote(mode), 'Crowded labels are hidden; hover a marker for all risk values.'].filter(Boolean);
+  return `${chartSlot('risk-scatter', build, 420)}<ul class="chart-notes">${notes.map(x => `<li>${x}</li>`).join('')}</ul>`;
 }
 
-// Risk matrix: products as rows, the three risks plus their mean as columns, each cell coloured by level
+// Sorting, filtering and hiding rows of the risk table
+function riskSort(key) {
+  const s = state.settings;
+  if (s.riskSortKey === key) s.riskSortDir = s.riskSortDir === 'asc' ? 'desc' : 'asc';
+  else { s.riskSortKey = key; s.riskSortDir = key === 'name' ? 'asc' : 'desc'; }
+  rerender('report');
+}
+function riskHide(encName) { const s = state.settings, x = new Set(s.riskHidden || []); x.add(decodeURIComponent(encName)); s.riskHidden = [...x]; rerender('report'); }
+expose({ riskSort, riskHide });
+
+// Risk table: every included product (after the filter), each risk cell shaded by level; click a header to sort by it.
+// The focus product row is highlighted so its position in each ordering is easy to follow.
 export function riskProfiles(rows) {
-  const list = (state.settings.riskSort === 'risk' ? rows.slice().sort((a, b) => riskScore(b, 'combined') - riskScore(a, 'combined')) : rows).slice(0, 12);
-  const cols = [['deliveryUncertainty', 'Delivery'], ['concentrationRisk', 'Lock-in'], ['buyerReadinessDependency', 'Readiness dep.'], ['combined', 'Combined']];
-  const data = list.flatMap((r, yi) => cols.map(([k], xi) => [xi, yi, +riskScore(r, k).toFixed(2)]));
-  const build = t => base(t, {
-    grid: { left: 8, right: 8, top: 8, bottom: 8, containLabel: true },
-    xAxis: categoryAxis(t, cols.map(c => c[1]), { position: 'top', axisLine: { show: false }, axisLabel: { interval: 0, color: t.muted, fontSize: 11, fontWeight: 700 } }),
-    yAxis: categoryAxis(t, names(list), { inverse: true, axisLine: { show: false }, axisLabel: { color: t.text, fontSize: 11, width: 150, overflow: 'truncate' } }),
-    visualMap: { show: false, type: 'piecewise', dimension: 2, pieces: [{ lt: 2.5, color: t.green }, { gte: 2.5, lt: 4, color: t.amber }, { gte: 4, color: t.red }] },
-    tooltip: { trigger: 'item', formatter: p => riskTip(list[p.value[1]]) },
-    series: [{ type: 'heatmap', data, itemStyle: { borderColor: t.surface, borderWidth: 3 }, label: { show: true, color: '#2B2622', fontSize: 11, fontWeight: 800, formatter: p => n(p.value[2]) } }]
-  });
-  return `<div class="chart-legend"><span><i style="background:var(--c-green)"></i>Low (under 2.5)</span><span><i style="background:var(--c-amber)"></i>Medium</span><span><i style="background:var(--c-red)"></i>High (4+)</span></div>${chartSlot('risk-matrix', build, 46 + list.length * 30)}`;
+  const s = state.settings, { list, col, dir, hidden } = riskRows(rows);
+  const arrow = k => k === col[0] ? (dir > 0 ? ' &uarr;' : ' &darr;') : '';
+  const cell = v => `<td class="num rk-${level(v)}">${n(v)}</td>`;
+  const head = RISK_COLUMNS.map(([k, label]) => `<th${k === 'name' ? '' : ' class="num"'}><button class="sort-head${k === col[0] ? ' on' : ''}" type="button" onclick="PB.riskSort('${k}')" aria-label="Sort by ${label}">${label}${arrow(k)}</button></th>`).join('') + '<th class="no-print"></th>';
+  const body = list.map(r => {
+    const k = r.risk, months = +k.p50Months ? `${n(k.p50Months)} / ${n(k.p90Months || k.p50Months)}` : '-';
+    return `<tr class="${r.name === s.focusProduct ? 'row-focus' : ''}"><td><b>${esc(r.name)}</b></td><td class="num">${n(displayValue(r))}</td>${cell(riskScore(r, 'deliveryUncertainty'))}${cell(riskScore(r, 'concentrationRisk'))}${cell(riskScore(r, 'buyerReadinessDependency'))}${cell(riskScore(r, 'combined'))}<td class="num">${months}</td><td class="no-print"><button class="linkish" type="button" title="Hide this row" aria-label="Hide ${esc(r.name)}" onclick="PB.riskHide('${enc(r.name)}')">&times;</button></td></tr>`;
+  }).join('');
+  const controls = `<div class="viz-controls no-print"><label>Highlight<select onchange="PB.setView('focusProduct',this.value)">${productOptions(s.focusProduct)}</select></label><label>Filter by name<input value="${esc(s.riskFilter || '')}" placeholder="e.g. spark, ray" onchange="PB.setView('riskFilter',this.value)"></label>${hidden.length ? `<button class="btn" type="button" onclick="PB.setView('riskHidden',[])">Show ${hidden.length} hidden</button>` : ''}</div>`;
+  return `${controls}<div class="chart-legend"><span><i style="background:var(--good-bg)"></i>Low (under 2.5)</span><span><i style="background:var(--warn-bg)"></i>Medium</span><span><i style="background:var(--bad-bg)"></i>High (4+)</span></div><div class="matrix-wrap"><table class="risk-table"><thead><tr>${head}</tr></thead><tbody>${body || '<tr><td colspan="8">No products match the filter.</td></tr>'}</tbody></table></div><p class="chart-note">${list.length} of ${rows.length} products. Sorted by ${col[1].toLowerCase()}, ${dir > 0 ? 'ascending' : 'descending'}.</p>`;
 }
 
 // Buyer readiness rubric as bars; the weakest weighted items are flagged because they limit every option

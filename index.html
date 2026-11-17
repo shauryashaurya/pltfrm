@@ -104,7 +104,7 @@
 <label class="btn">Import JSON<input class="hide" type="file" id="importFile" accept="application/json"></label>
 <button class="btn danger" type="button" onclick="PB.resetAll()">Reset to baseline</button>
 </div>
-<div class="tiny">JSON preserves products, scores, weights, must-haves and settings. All processing stays in this browser. To publish changes for every reader, replace src/data/seed.json with an exported JSON and redeploy.</div>
+<div class="tiny">JSON preserves products, scores, weights, must-haves and settings. All processing stays in this browser. To publish changes for every reader, run npm run import-scenario on an exported JSON and redeploy.</div>
 </div>
 </div>
 <div class="step-foot"><span></span><button class="btn primary" type="button" onclick="PB.showStep(2)">Next: Choose products</button></div>
@@ -126,6 +126,7 @@
 <div class="product-form">
 <input id="newName" placeholder="Product name" aria-label="Product name">
 <input id="newCategory" placeholder="Category" aria-label="Category">
+<select id="newScope" aria-label="Offering scope"></select>
 <input id="newRole" placeholder="Primary role" aria-label="Primary role">
 <input id="newFit" placeholder="Representative fit" aria-label="Representative fit">
 <input class="wide" id="newBoundary" placeholder="Boundary / verification need" aria-label="Boundary or verification need">
@@ -162,22 +163,15 @@
 </div>
 <div class="card">
 <h3>Dimension weights</h3>
-<div class="explain"><b>Cross-enterprise default.</b> Technical and enterprise readiness 20; business/platform coverage 20; AI and agentic applicability 12; delivery and operating economics 16; domain/use-case fit 24; adoption/value realization 8. Domain fit and platform breadth carry the most weight because this scenario needs a platform that reaches beyond one business domain. A single-domain preset (22/17/13/20/18/10) puts more weight on technical readiness and economics. Enter relative priorities; calculations normalize automatically.</div>
+<ul class="explain explain-list"><li>Weights are relative and normalize to 100%.</li><li>Cross-enterprise default favours domain fit and business coverage: the scenario spans domains.</li><li>Single-domain preset shifts weight to technical readiness and economics.</li><li>Defaults and rationale: <b>Methodology</b>.</li></ul>
 <div id="dimWeights"></div>
 <div id="dimTotal" class="weight-total"></div>
 </div>
 <div class="card">
 <h3>Criterion weights</h3>
-<div class="explain"><b>How the defaults were set.</b> Technical, AI, operating-economics, domain-fit and adoption/value criteria use explicit priorities totaling 100%. Business criteria began as relative points: core ontology, integration and control domains = 10; major platform domains = 7; supporting domains = 4. Normalizing those points produces values such as 11.111% and 4.444%; the decimals are allocation results, not measurement precision. The same rubric appears in <b>Methodology</b>.</div>
+<ul class="explain explain-list"><li>Most dimensions use explicit criterion priorities totalling 100%.</li><li>Business criteria use points: 10 core ontology, integration and control; 7 major platform domains; 4 supporting. Shares such as 11.111% are the normalized result.</li></ul>
 <div class="form-row"><label for="weightDimension">Dimension</label>
-<select id="weightDimension">
-<option value="technical">Technical &amp; enterprise</option>
-<option value="business">Business/platform</option>
-<option value="ai">AI &amp; agentic</option>
-<option value="economics">Delivery &amp; operating economics</option>
-<option value="domain">Domain &amp; use-case fit</option>
-<option value="adoption">Adoption &amp; value realization</option>
-</select></div>
+<select id="weightDimension"></select></div>
 <div id="criteriaWeights"></div>
 </div>
 </div>

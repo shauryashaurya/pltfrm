@@ -1,5 +1,5 @@
 // Single source of truth: the study state, seeded from the published baseline
-import seedData from '../data/seed.json';
+import seedData from '../data/index.js';
 
 export const seed = seedData;
 export let state = structuredClone(seedData);

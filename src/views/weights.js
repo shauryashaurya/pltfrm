@@ -69,6 +69,8 @@ function applyPreset() {
 function step(fn) { if (fn()) { renderWeights(); rerender('report', 'comparison'); } }
 
 export function bindWeights() {
+  // Dimension picker for criterion weights comes from the dimension registry
+  $('weightDimension').innerHTML = Object.entries(dims).map(([k, label]) => `<option value="${k}">${esc(label)}</option>`).join('');
   $('weightPreset').innerHTML = Object.entries(WEIGHT_PRESETS).map(([k, p]) => `<option value="${k}">${esc(p.label)}</option>`).join('');
   $('weightDimension').addEventListener('change', renderCriterionWeights);
   // A finished edit (slider released, number committed) becomes one undo step

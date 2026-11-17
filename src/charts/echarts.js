@@ -102,3 +102,20 @@ addEventListener('afterprint', () => live.forEach(e => e.chart?.resize()));
 // Count of mounted charts, for checking that re-renders do not leak instances
 export const liveChartCount = () => live.size;
 expose({ liveChartCount });
+
+// Axis scaling for scatters whose points cluster: 'fit' zooms to the data with a nice margin, 'rank' spaces products
+// evenly by order (0 = lowest, 100 = highest; ties share a position) and 'absolute' keeps the full scale.
+// Returns map(value) -> plotted position, axis options to merge into valueAxis, and a short description of the scale.
+export function scaledAxis(values, mode, [lo0, hi0] = [0, 100]) {
+  const vals = values.filter(v => isFinite(v));
+  if (mode === 'rank') {
+    const sorted = [...vals].sort((a, b) => a - b), last = Math.max(1, sorted.length - 1);
+    const pos = v => { const first = sorted.indexOf(v), lastIdx = sorted.lastIndexOf(v); return ((first + lastIdx) / 2) / last * 100; };
+    return { map: pos, axis: { min: -4, max: 104, interval: 25, axisLabel: { formatter: v => v === 0 ? 'lowest' : v === 100 ? 'highest' : '' } }, label: 'rank' };
+  }
+  if (mode === 'absolute' || !vals.length) return { map: v => v, axis: { min: lo0, max: hi0 }, label: `${lo0}-${hi0}` };
+  const span = hi0 - lo0, min = Math.min(...vals), max = Math.max(...vals), pad = Math.max((max - min) * .08, span * .02);
+  const step = span >= 50 ? 5 : .25;
+  const lo = Math.max(lo0, Math.floor((min - pad) / step) * step), hi = Math.min(hi0, Math.ceil((max + pad) / step) * step);
+  return { map: v => v, axis: { min: lo, max: hi === lo ? hi + step : hi, interval: undefined, axisLabel: { formatter: v => +v.toFixed(2) } }, label: `${+lo.toFixed(2)}-${+hi.toFixed(2)}` };
+}

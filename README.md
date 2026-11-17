@@ -21,8 +21,6 @@
 
 A configurable comparison of enterprise data, ontology and agentic platforms (Palantir Foundry, Microsoft Fabric, Databricks, Snowflake, Salesforce Data Cloud and others) for strategy and build vs buy decisions.
 
-## 📄 License
-
 Released under the [Apache License 2.0](LICENSE).
 
 ---

@@ -1,28 +1,29 @@
-// Six-axis radar of the leading products (ECharts), with zoomed or absolute axes, plus a dimension table for the same products
+// Dimension radar of the leading products (ECharts), with zoomed or absolute axes, plus a dimension table for the same products
 import { state } from '../core/state.js';
 import { esc, n } from '../core/format.js';
-import { displayValue } from '../core/scoring.js';
+import { displayValue, DIMENSIONS } from '../core/scoring.js';
 import { chartSlot, base } from './echarts.js';
 import { shortLabel } from './scatter.js';
 
-const AXES = [['t', 'Technical'], ['b', 'Business'], ['a', 'AI'], ['o', 'Economics'], ['d', 'Domain fit'], ['v', 'Adoption/value']];
+// One axis per dimension (registry order): [result letter, axis name, abbreviation]
+const axes = () => DIMENSIONS.map(d => [d.letter, d.column, d.abbr]);
 
-// Compact hover card: name, 6D and the six dimensions in two columns, then confidence and must-haves
+// Compact hover card: name, composite and each dimension in two columns, then confidence and must-haves
 function radarTip(r) {
   const cell = (label, v) => `<span style="opacity:.75">${label}</span><b style="text-align:right">${n(v)}</b>`;
   return `<div style="font-weight:800;font-size:12px;margin-bottom:4px">${esc(r.name)}</div>`
-    + `<div style="display:grid;grid-template-columns:auto auto auto auto;gap:1px 8px">${cell('6D', displayValue(r))}${AXES.map(([k, name]) => cell(name.replace('Adoption/value', 'Adoption').replace('Domain fit', 'Domain'), r[k])).join('')}</div>`
+    + `<div style="display:grid;grid-template-columns:auto auto auto auto;gap:1px 8px">${cell('Composite', displayValue(r))}${axes().map(([k, , abbr]) => cell(abbr, r[k])).join('')}</div>`
     + `<div style="opacity:.75;margin-top:4px">Confidence ${r.confidence} | must-haves ${r.gates.pass}/${r.gates.fail}/${r.gates.unknown}</div>`;
 }
 
-// Products shown: the top N by the displayed 6D, the same order as the executive summary
+// Products shown: the top N by the displayed composite, the same order as the executive summary
 export function radarSelection(rows) {
   const count = Math.max(2, Math.min(+state.settings.radarCount || 7, 12)), mode = state.settings.radarScale === 'absolute' ? 'absolute' : 'zoom';
   return { count, mode, chosen: rows.slice().sort((a, b) => displayValue(b) - displayValue(a)).slice(0, count) };
 }
 
 export function radarChart(rows) {
-  const { count, mode, chosen } = radarSelection(rows);
+  const { count, mode, chosen } = radarSelection(rows), AXES = axes();
   // Zoom gives each axis its own range around the compared products so differences are visible
   const ranges = Object.fromEntries(AXES.map(([k]) => {
     if (mode === 'absolute') return [k, [0, 100]];
@@ -63,11 +64,11 @@ export function radarChart(rows) {
   return `${controls}${chartSlot('radar', build, 480)}<div class="chart-note">Hover a shape to bring it forward and see its full breakdown; click a name in the legend to hide or show it.</div>${note}`;
 }
 
-// Dimension table beside the radar: the same products with all six scores and 6D, shaded by score
+// Dimension table beside the radar: the same products with each dimension and the composite, shaded by score
 export function profileTable(rows) {
   const { chosen } = radarSelection(rows);
-  const cols = [['c', '6D'], ['t', 'Tech'], ['b', 'Bus.'], ['a', 'AI'], ['o', 'Econ.'], ['d', 'Domain'], ['v', 'Adopt.']];
+  const cols = [['c', 'Comp.'], ...axes().map(([k, , abbr]) => [k, abbr])];
   const val = (r, k) => k === 'c' ? displayValue(r) : r[k];
   const body = chosen.map(r => `<tr><td>${esc(r.name)}</td>${cols.map(([k]) => { const v = val(r, k); return `<td class="num${k === 'c' ? ' lead' : ''}" style="--v:${Math.max(0, Math.min(100, v)).toFixed(0)}">${n(v)}</td>`; }).join('')}</tr>`).join('');
-  return `<table class="profile-table"><thead><tr><th>Product</th>${cols.map(([, l]) => `<th>${l}</th>`).join('')}</tr></thead><tbody>${body}</tbody></table><div class="chart-note">Scores out of 100; darker cells score higher. 6D is ${state.settings.showEvidenceAdjusted ? 'evidence-adjusted' : 'raw'}.</div>`;
+  return `<table class="profile-table"><thead><tr><th>Product</th>${cols.map(([, l]) => `<th>${l}</th>`).join('')}</tr></thead><tbody>${body}</tbody></table><div class="chart-note">Scores out of 100; darker cells score higher. Comp. is the composite, ${state.settings.showEvidenceAdjusted ? 'evidence-adjusted' : 'raw'}.</div>`;
 }

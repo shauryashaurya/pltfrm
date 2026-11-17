@@ -34,3 +34,6 @@ export function toCSV(headers, rows) {
 
 // Thin progress bar used in the report summary
 export function bar(v) { return `<div class="bar"><i style="width:${Math.max(0, Math.min(100, v))}%"></i></div>`; }
+
+// Session caveat for readers who edit in place; sits at the foot of the panel in small type, never in print
+export const sessionNote = () => '<p class="page-note reader-only no-print">Reader edits apply to this browser tab and clear on reload. Keep them with Export &gt; Export JSON scenario or Print full report / PDF.</p>';

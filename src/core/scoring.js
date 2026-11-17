@@ -1,8 +1,14 @@
-// Scoring model: criterion scores (0-5) -> dimension scores (0-100) -> 6D composite -> evidence-adjusted value
+// Scoring model: criterion scores (0-5) -> dimension scores (0-100) -> weighted composite -> evidence-adjusted value
 import { state } from './state.js';
 import { esc } from './format.js';
+import dimensionRegistry from '../data/dimensions.json';
 
-export const dims = { technical: 'Technical & enterprise', business: 'Business/platform', ai: 'AI & agentic', economics: 'Delivery & operating economics', domain: 'Domain & use-case fit', adoption: 'Adoption & value realization' };
+// Dimension registry (src/data/dimensions.json): key, one-letter result field, long label, table column, abbreviation, CSV header.
+// Adding a dimension means adding it here, to study.json criteria and dimensionWeights, and to every product's scores.
+export const DIMENSIONS = dimensionRegistry;
+export const dims = Object.fromEntries(DIMENSIONS.map(d => [d.key, d.label]));
+const LETTERS = Object.fromEntries(DIMENSIONS.map(d => [d.key, d.letter]));
+
 
 export function product(name) { return state.products.find(p => p.name === name); }
 
@@ -38,7 +44,7 @@ export function subScore(name, ids) {
   return used ? total / used * 20 : 0;
 }
 
-// Combine six dimension scores with normalized dimension weights (geometric limits compensation, arithmetic allows it)
+// Combine dimension scores (in dims order) with normalized dimension weights (geometric limits compensation, arithmetic allows it)
 export function composite(vals) {
   const dw = state.dimensionWeights, keys = Object.keys(dims), weights = keys.map(k => +dw[k] || 0), sum = weights.reduce((a, b) => a + b, 0) || 1, w = weights.map(x => x / sum);
   if (state.settings.compositeMethod === 'arithmetic') return vals.reduce((a, v, i) => a + v * w[i], 0);
@@ -79,15 +85,18 @@ export function benefits(name) {
   return { enabled: true, annual, gross, riskAdjusted, net, riskNet, roi, payback, years };
 }
 
-export function econKey(dim) { return ({ technical: 't', business: 'b', ai: 'a', economics: 'o', domain: 'd', adoption: 'v' })[dim] || 't'; }
+export function econKey(dim) { return LETTERS[dim] || 't'; }
 
-// One result row per included product, sorted by raw composite (the report's ordering)
+// One result row per included product in the selected scope, sorted by raw composite (the report's ordering).
+// Dimension scores are on r.dims[key] and, for existing callers, on the short letter keys from econKey().
 export function allResults() {
-  return state.products.filter(p => !p.hidden).map(p => {
-    const t = dimensionScore(p.name, 'technical'), b = dimensionScore(p.name, 'business'), a = dimensionScore(p.name, 'ai'), o = dimensionScore(p.name, 'economics'), d = dimensionScore(p.name, 'domain'), v = dimensionScore(p.name, 'adoption');
-    const c = composite([t, b, a, o, d, v]), f = state.confidenceFactors[p.confidence] ?? .25;
+  const scope = state.settings.scopeFilter || 'All', keys = Object.keys(dims);
+  return state.products.filter(p => !p.hidden && (scope === 'All' || p.scope === scope)).map(p => {
+    const ds = Object.fromEntries(keys.map(k => [k, dimensionScore(p.name, k)]));
+    const c = composite(keys.map(k => ds[k])), f = state.confidenceFactors[p.confidence] ?? .25;
     const scale = subScore(p.name, state.scaleCriteria), ent = subScore(p.name, state.criteria.technical.filter(x => !state.scaleCriteria.includes(x.id)).map(x => x.id));
-    return { name: p.name, category: p.category, confidence: p.confidence, t, b, a, o, d, v, c, adjusted: c * f, scale, enterprise: ent, cost: tco(p.name), risk: p.riskOverlay || {}, gates: mustHaveSummary(p.name), role: p.role || '', fit: p.fit || '', boundary: p.boundary || '', notes: p.notes || '' };
+    const letters = Object.fromEntries(keys.map(k => [econKey(k), ds[k]]));
+    return { name: p.name, scope: p.scope || 'Unclassified', category: p.category, confidence: p.confidence, ...letters, dims: ds, c, adjusted: c * f, scale, enterprise: ent, cost: tco(p.name), risk: p.riskOverlay || {}, gates: mustHaveSummary(p.name), role: p.role || '', fit: p.fit || '', boundary: p.boundary || '', notes: p.notes || '' };
   }).sort((x, y) => y.c - x.c);
 }
 
@@ -121,7 +130,7 @@ export function scoreMeta(name, dim, cid) {
   return state.scoreStatus?.[name]?.[dim]?.[cid] || { status: 'User input required', rationale: 'No packaged score provenance is available.', source: '', updated: '' };
 }
 
-export function statusClass(s) { return s.includes('User') ? 'st-user' : s.includes('cost') || s.includes('buyer') ? 'st-cost' : s.includes('workload') ? 'st-workload' : 'st-base'; }
+export function statusClass(s) { return s.includes('Rescored') ? 'st-rescored' : s.includes('User') ? 'st-user' : s.includes('cost') || s.includes('buyer') ? 'st-cost' : s.includes('workload') ? 'st-workload' : 'st-base'; }
 
 export function scoreCoverage() {
   let total = 0, missing = 0, user = 0, validate = 0;

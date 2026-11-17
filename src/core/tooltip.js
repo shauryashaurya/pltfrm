@@ -1,12 +1,12 @@
 // Hover tooltips for chart marks and table cells
 import { $, esc, n } from './format.js';
-import { allResults, resultByName } from './scoring.js';
+import { allResults, resultByName, DIMENSIONS } from './scoring.js';
 import { expose } from './actions.js';
 
 // Standard product summary shown when hovering any product mark
 export function tipText(r) {
   if (!r) return 'No data';
-  return `<b>${esc(r.name)}</b><br>${esc(r.category)}<br>Technical ${n(r.t)} | Business ${n(r.b)} | AI ${n(r.a)} | Economics ${n(r.o)} | Domain ${n(r.d)} | Adoption ${n(r.v)} | 6D ${n(r.c)}<br>Scale ${n(r.scale)} | Enterprise ${n(r.enterprise)}<br>Confidence ${r.confidence}; must-haves met/not met/unchecked ${r.gates.pass}/${r.gates.fail}/${r.gates.unknown}`;
+  return `<b>${esc(r.name)}</b><br>${esc(r.scope)} | ${esc(r.category)}<br>${DIMENSIONS.map(d => `${esc(d.abbr)} ${n(r[d.letter])}`).join(' | ')} | Composite ${n(r.c)}<br>Scale ${n(r.scale)} | Enterprise ${n(r.enterprise)}<br>Confidence ${r.confidence}; must-haves met/not met/unchecked ${r.gates.pass}/${r.gates.fail}/${r.gates.unknown}`;
 }
 
 // Escape a tooltip HTML string for a single-quoted inline handler; &#39; would decode back to a quote, so use a JS escape

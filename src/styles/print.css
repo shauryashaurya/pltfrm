@@ -18,4 +18,6 @@
   th { position: static; }
   .matrix-wrap { max-height: none !important; overflow: visible !important; }
   .print-break { break-before: page; }
+  .print-only { display: block !important; }
+  .risk-table .no-print, .chip-row { display: none !important; }
 }

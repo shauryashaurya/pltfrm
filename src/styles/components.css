@@ -84,8 +84,10 @@ summary { cursor: pointer; font-weight: 700; }
 .matrix tbody td { height: 45px; }
 .matrix input, .matrix select { width: 88px; min-width: 0; padding: 4px 6px; }
 .comparison-table { table-layout: fixed; }
-.comparison-table th:nth-child(1) { width: 16%; } .comparison-table th:nth-child(2) { width: 14%; } .comparison-table th:nth-child(3) { width: 19%; }
-.comparison-table th:nth-child(4) { width: 20%; } .comparison-table th:nth-child(5) { width: 25%; } .comparison-table th:nth-child(6) { width: 6%; }
+/* Roles table: Boundary / verification need takes half the width; the other six columns share the rest */
+.comparison-table th:nth-child(1) { width: 10%; } .comparison-table th:nth-child(2) { width: 8%; } .comparison-table th:nth-child(3) { width: 8%; }
+.comparison-table th:nth-child(4) { width: 9%; } .comparison-table th:nth-child(5) { width: 9%; } .comparison-table th:nth-child(6) { width: 50%; } .comparison-table th:nth-child(7) { width: 6%; }
+.comparison-table td { overflow-wrap: anywhere; }
 .gate-fail { color: var(--bad-text); font-weight: 800; }
 .gate-toolbar { display: grid; grid-template-columns: repeat(3, minmax(150px, 1fr)); gap: 8px; align-items: end; margin: 10px 0; }
 .gate-toolbar label { font-size: 12px; color: var(--muted); }
@@ -100,7 +102,7 @@ summary { cursor: pointer; font-weight: 700; }
 
 /* Score status tags keep fixed pastels with dark ink in both themes */
 .status-tag { display: inline-block; padding: 2px 7px; font-size: 10px; font-weight: 700; margin-top: 3px; color: var(--tag-ink); }
-.st-base { background: #D9E4EE; } .st-workload { background: #EEE4C9; } .st-user { background: #EEDAD7; } .st-cost { background: #E2DEEC; }
+.st-base { background: #D9E4EE; } .st-workload { background: #EEE4C9; } .st-user { background: #EEDAD7; } .st-cost { background: #E2DEEC; } .st-rescored { background: #DCE6D3; }
 .score-cell .status-tag { display: block; white-space: normal; line-height: 1.15; }
 .status-legend { display: flex; gap: 7px; flex-wrap: wrap; margin: 8px 0; }
 .status-legend span { font-size: 11px; }
@@ -185,3 +187,35 @@ summary { cursor: pointer; font-weight: 700; }
 @media (max-width: 600px) {
   .coverage-kpi, .tco-summary, .value-grid, .cost-grid, .exec-grid { grid-template-columns: 1fr; }
 }
+
+/* Guidance as short bullets; chart notes as a compact list */
+ul.explain-list { padding: 9px 16px 9px 32px; }
+ul.explain-list li { margin: 2px 0; }
+.chart-notes { font-size: 12px; color: var(--muted); margin: 4px 0 9px; padding-left: 18px; }
+.chart-notes li { margin: 1px 0; }
+.methodology ul, .methodology ol { margin: 6px 0 4px; padding-left: 22px; line-height: 1.55; }
+.methodology li { margin: 2px 0; }
+
+/* Process caveats sit at the foot of a page in small type */
+.page-note { font-size: 11.5px; color: var(--muted); margin: 18px 2px 4px; line-height: 1.5; }
+ul.page-note { padding-left: 18px; }
+
+/* Trade-off explorer: which side of zero belongs to which product */
+.trade-sides { display: flex; justify-content: space-between; font-size: 12px; font-weight: 800; margin: 6px 0 2px; }
+.trade-sides .good { color: var(--good-text); } .trade-sides .bad { color: var(--bad-text); }
+
+/* Product chips for the criterion comparison */
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 12px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--surface-2); padding: 4px 10px; font-size: 12.5px; cursor: pointer; }
+.chip.on { border-color: var(--line-strong); background: var(--primary); color: var(--primary-text); font-weight: 700; }
+.chip input { margin: 0; }
+
+/* Sortable risk table */
+.risk-table th { padding: 0; }
+.sort-head { width: 100%; border: 0; background: transparent; color: inherit; font: inherit; font-weight: 800; text-align: inherit; padding: 8px 10px; cursor: pointer; white-space: nowrap; }
+.sort-head:hover, .sort-head.on { background: var(--surface-3); }
+.risk-table th.num .sort-head { text-align: right; }
+.risk-table td.rk-low { background: var(--good-bg); } .risk-table td.rk-med { background: var(--warn-bg); } .risk-table td.rk-high { background: var(--bad-bg); }
+.risk-table tr.row-focus td { box-shadow: inset 0 2px 0 var(--line-strong), inset 0 -2px 0 var(--line-strong); font-weight: 800; }
+
+.print-only { display: none; }

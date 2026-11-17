@@ -16,11 +16,11 @@ export function riskChart(rows) {
     yAxis: categoryAxis(t, names(list), { inverse: true, axisLabel: { color: t.text, fontSize: 11, width: 150, overflow: 'truncate' } }),
     tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, formatter: ps => `<b>${esc(list[ps[0].dataIndex].name)}</b> (confidence ${list[ps[0].dataIndex].confidence})<br>${ps.map(p => `${p.seriesName} ${n(p.value)}`).join('<br>')}` },
     series: [
-      { name: 'Raw 6D', type: 'bar', data: list.map(r => +r.c.toFixed(1)), itemStyle: { color: t.blue }, barGap: '10%', barCategoryGap: '30%' },
+      { name: 'Raw composite', type: 'bar', data: list.map(r => +r.c.toFixed(1)), itemStyle: { color: t.blue }, barGap: '10%', barCategoryGap: '30%' },
       { name: 'Evidence-adjusted', type: 'bar', data: list.map(r => +r.adjusted.toFixed(1)), itemStyle: { color: t.gray }, label: { show: true, position: 'right', formatter: p => n(p.value), color: t.text, fontSize: 11 } }
     ]
   });
-  return `<div class="chart-legend"><span><i style="background:var(--c-blue)"></i>Raw 6D</span><span><i style="background:var(--c-gray)"></i>Evidence-adjusted</span></div>${chartSlot('evidence', build, barHeight(list.length) + 60)}`;
+  return `<div class="chart-legend"><span><i style="background:var(--c-blue)"></i>Raw composite</span><span><i style="background:var(--c-gray)"></i>Evidence-adjusted</span></div>${chartSlot('evidence', build, barHeight(list.length) + 60)}`;
 }
 
 // Stacked met / not met / not checked share per product

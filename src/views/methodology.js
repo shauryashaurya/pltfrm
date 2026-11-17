@@ -1,23 +1,112 @@
-// Methodology: score and confidence scales, weighting rationale, calculation and verification guidance
+// Methodology: scales, dimensions and weights, offering scopes, calculation, must-have defaults, provenance and verification
 import { state } from '../core/state.js';
-import { $, n } from '../core/format.js';
+import { $, esc, n } from '../core/format.js';
 import { registerView } from '../core/registry.js';
+import { DIMENSIONS } from '../core/scoring.js';
+import { SCOPE_REGISTRY, WEIGHT_PRESETS } from '../config.js';
 
-const SCORE_SCALE = [[0, 'Absent/out of scope'], [1, 'Limited, early or extensive custom construction'], [2, 'Basic or material gaps'], [3, 'Production-capable for defined use cases'], [4, 'Broad documented capability'], [5, 'Integrated and broadly evidenced']];
-const CONFIDENCE_TEXT = { A: 'Independently tested or accepted third-party verification', B: 'Broad official evidence and production references', C: 'Official/public evidence requiring customer validation', D: 'Early or incomplete enterprise evidence', E: 'Unknown or insufficient evidence' };
+const SCORE_SCALE = [[0, 'Absent or out of scope'], [1, 'Limited, early or heavy custom build'], [2, 'Basic, with material gaps'], [3, 'Production-capable for defined use cases'], [4, 'Broad, documented capability'], [5, 'Integrated and broadly evidenced']];
+const CONFIDENCE_TEXT = { A: 'Independently tested or third-party verified', B: 'Broad official evidence and production references', C: 'Official or public evidence; needs customer validation', D: 'Early or incomplete enterprise evidence', E: 'Unknown or insufficient evidence' };
+
+const list = items => `<ul>${items.map(x => `<li>${x}</li>`).join('')}</ul>`;
+const ol = items => `<ol>${items.map(x => `<li>${x}</li>`).join('')}</ol>`;
+const presetWeights = key => DIMENSIONS.map(d => n(WEIGHT_PRESETS[key]?.dimensions?.[d.key] ?? 0).replace(/\.0$/, '')).join('/');
 
 function renderMethodology() {
-  const dw = state.dimensionWeights;
-  $('methodology').innerHTML = `<div class="card"><h2>Scoring and verification guide</h2><div class="viz-controls no-print editor-only"><button class="btn" type="button" onclick="PB.exportMethodologyCSV()">Export methodology CSV</button></div>`
+  const dw = state.dimensionWeights, total = DIMENSIONS.reduce((a, d) => a + (+dw[d.key] || 0), 0) || 1, mh = state.mustHaveDefaults || { met: 4, notMet: 1.5 };
+
+  const dimTable = `<table><thead><tr><th>Dimension</th><th>Weight</th><th>Share</th><th>Criteria</th></tr></thead><tbody>${DIMENSIONS.map(d => `<tr><td>${esc(d.label)}</td><td class="num">${n(+dw[d.key] || 0)}</td><td class="num">${n((+dw[d.key] || 0) / total * 100)}%</td><td class="num">${(state.criteria[d.key] || []).length}</td></tr>`).join('')}</tbody></table>`;
+
+  $('methodology').innerHTML = `<div class="card methodology"><h2>Scoring and verification guide</h2><div class="viz-controls no-print editor-only"><button class="btn" type="button" onclick="PB.exportMethodologyCSV()">Export methodology CSV</button></div>`
     + `<h3>Score scale</h3><table><tr><th>Score</th><th>Meaning</th></tr>${SCORE_SCALE.map(x => `<tr><td>${x[0]}</td><td>${x[1]}</td></tr>`).join('')}</table>`
     + `<h3 class="gap">Confidence scale</h3><table><tr><th>Grade</th><th>Factor</th><th>Evidence standard</th></tr>${Object.entries(state.confidenceFactors).map(([k, v]) => `<tr><td>${k}</td><td>${v}</td><td>${CONFIDENCE_TEXT[k] || ''}</td></tr>`).join('')}</table>`
-    + `<h3 class="gap">Weighting rationale</h3><p>The current dimension weights are ${n(dw.technical)} technical/enterprise, ${n(dw.business)} business/platform, ${n(dw.ai)} AI/agentic, ${n(dw.economics)} delivery/operating economics, ${n(dw.domain)} domain/use-case fit and ${n(dw.adoption)} adoption/value realization (relative values; they normalize automatically). The default for a cross-enterprise operational platform is 20/20/12/16/24/8. Domain fit and breadth of platform coverage carry the most weight because this scenario needs a platform that reaches beyond one business domain. Economics carries less because packaged economics scores are assessed within each product's home scope and over-credit domain-centered suites until buyer-specific TCO is entered. For the same reason, "Extension beyond initial use case" carries 12% of domain fit. A single-domain preset (22/17/13/20/18/10) puts more weight on technical readiness and economics for narrower deployments. Business-domain weights were derived from relative points: 10 for core ontology, integration and control domains; 7 for major platform domains; and 4 for supporting domains. Normalization generates repeating percentages such as 11.111% and 4.444%. These are allocation outputs rather than precision claims.</p>`
-    + `<h3 class="gap">Calculation</h3><p>Each of the six dimensions is a normalized weighted average of 0-5 criterion scores, converted to 0-100. In the economics dimension, time to a controlled production outcome is assessed with implementation effort, service stitching, custom code/configuration, maintenance/regression and run operations. A score of 5 means more favorable delivery/run economics and lower integration or operating burden; it does not mean lowest quoted price. The default 6D composite is a weighted geometric mean. The optional arithmetic method is more compensatory. Evidence-risk-adjusted 6D equals the composite multiplied by the configured confidence factor.</p>`
-    + `<h3>Interpretive safeguards</h3><p>Use totals to screen, not to erase differences. Review domain fit and adoption/value in the named scenario. Review qualitative economics and quantitative TCO separately: an integrated suite can reduce implementation and stitching while still having higher license cost. Review the trade-off explorer, most-discriminating criteria, product role/boundary, must-have status and evidence confidence before making a decision.</p>`
-    + `<h3>Score completeness and provenance</h3><p>Every packaged product has a baseline score for every current rubric criterion. These are not all equally decision-ready. Technical/product criteria are directional baselines requiring current evidence; workload-sensitive criteria require matched tests; economics requires buyer cost evidence; domain fit requires scenario-specific input; adoption/value requires buyer-organization input. New products begin blank and are marked User input required.</p>`
-    + `<h3>Decision-risk overlays</h3><p>Delivery uncertainty, concentration/lock-in and buyer readiness are not blended into the composite. Report P50/P90 schedule, TCO ranges, concentration dependencies and buyer readiness separately. This prevents risk and organizational conditions from being hidden inside capability scores.</p>`
-    + `<h3>How to adjust scores yourself</h3><ol><li>Unlock editing, open <b>Scores and evidence</b>, choose a dimension and filter to the product.</li><li>Change a 0-5 criterion score; it is marked User-provided - validate and recalculates live.</li><li>Change dimension or criterion weights under <b>Set weights</b>; relative weights normalize automatically, and Undo/Redo is available.</li><li>Add rationale in Product context, cost evidence in Cost, TCO and value, and validation evidence in Validation plan.</li><li>Export JSON to preserve every score, weight, TCO input, must-have, risk and note. CSV, Markdown and Print/PDF provide review artifacts.</li></ol>`
-    + `<h3>Verification sequence</h3><ol><li>Confirm product scope, edition, deployment and current availability.</li><li>Check each must-have and obtain evidence for every one marked Met.</li><li>Run matched workload tests for latency, throughput, recall, update visibility, concurrency and failure behavior.</li><li>Test human, service and agent identities across object, field, path, retrieval and action controls.</li><li>Reconstruct end-to-end lineage and audit from source through recommendation, approval and external action.</li><li>Test lifecycle changes, backup/restore, bulk export and exit.</li><li>Record evidence dates, owners, exceptions and residual risk outside the score.</li></ol></div>`;
+
+    + `<h3 class="gap">Dimensions and weights</h3>${dimTable}`
+    + list([
+      'Weights are relative and normalize to 100%.',
+      `Cross-enterprise default: ${presetWeights('cross-enterprise')}. Single-domain preset: ${presetWeights('single-domain')} (order as in the table).`,
+      'Domain fit and business coverage weigh most: the scenario needs a platform that spans domains.',
+      'Economics weighs less: packaged economics scores reflect each product\'s home scope until buyer TCO is entered.',
+      '"Extension beyond initial use case" carries 12% of domain fit for the same reason.',
+      'Business criterion weights start as points: 10 for core ontology, integration and control; 7 for major platform domains; 4 for supporting domains. Shares such as 11.111% are the normalized result.'
+    ])
+
+    + `<h3 class="gap">Offering scope</h3>`
+    + list([
+      'Each score rates what the offering delivers natively, as purchased, toward a cross-enterprise operational platform.',
+      'Each product has one scope; the report\'s <b>Compare within</b> filter ranks one scope at a time.',
+      ...SCOPE_REGISTRY.map(x => `<b>${esc(x.name)}:</b> ${esc(x.description)}`),
+      'Engines, databases and frameworks are capped on platform-level criteria: applications, workflow, agent actions, adoption, and the effort to build a platform around them.',
+      'Domain application platforms are capped on economics beyond their home domain.',
+      'Capped cells are tagged "Rescored for platform scope" and keep their prior score.'
+    ])
+
+    + `<h3 class="gap">Calculation</h3>`
+    + list([
+      'Dimension score: weighted mean of 0-5 criterion scores × 20 (0-100).',
+      'Composite: weighted geometric mean of dimension scores (default) or weighted arithmetic mean.',
+      'Geometric mean limits how far a strong dimension offsets a weak one.',
+      'Evidence-adjusted composite: composite × confidence factor.',
+      'Unknown scores count as 0 or are excluded, per the scenario setting.',
+      'Economics 5: lowest build and run burden (implementation, stitching, custom code, maintenance, operations). Price sits in the TCO model.'
+    ])
+
+    + `<h3 class="gap">Must-have defaults</h3>`
+    + list([
+      'Each must-have maps to the criterion scores that measure it.',
+      `Met: weakest mapped score ${n(mh.met)} or higher.`,
+      `Not met: weakest mapped score ${n(mh.notMet)} or lower.`,
+      'Not checked: anything in between, or an unscored criterion.',
+      'Not applicable: the product\'s scope caps every mapped criterion.',
+      'Recorded statuses replace defaults; obtain evidence for every Met before selection.'
+    ])
+    + `<table><thead><tr><th>Must-have</th><th>Criteria behind the default</th></tr></thead><tbody>${state.gates.map(g => `<tr><td>${esc(g.area)}</td><td>${(g.basis || []).map(b => esc(b.id)).join('; ') || '-'}</td></tr>`).join('')}</tbody></table>`
+
+    + `<h3 class="gap">Risk overlays</h3>`
+    + list([
+      'Delivery uncertainty, lock-in and buyer-readiness dependency (0-5) are reported beside the composite and excluded from it.',
+      'P50/P90 schedule and TCO ranges are reported per product.',
+      'Buyer readiness describes your organization and applies to every option.'
+    ])
+
+    + `<h3 class="gap">Reading results</h3>`
+    + list([
+      'Screen with the composite; decide with criterion trade-offs, must-haves, risk and TCO.',
+      'Compare within one offering scope and product role.',
+      'Domain fit and adoption/value are scenario-specific.',
+      'Economics score and quantitative TCO are separate measures.'
+    ])
+
+    + `<h3 class="gap">Score provenance</h3>`
+    + list([
+      'Every packaged product has a score for every criterion.',
+      'Status tags mark how decision-ready each score is: Baseline - validate; Workload validation; Buyer cost validation; User input required; Rescored for platform scope.',
+      'Technical and product criteria: directional baselines; confirm with current evidence.',
+      'Workload-sensitive criteria: confirm with matched tests.',
+      'Economics: needs buyer cost evidence. Domain fit: needs the named scenario. Adoption/value: needs buyer-organization input.',
+      'New products start blank and are tagged User input required.'
+    ])
+
+    + `<h3 class="gap">Adjusting scores</h3>`
+    + ol([
+      'Unlock editing and open <b>Scores and evidence</b>; choose a dimension and filter to the product.',
+      'Change a 0-5 score; it is tagged User-provided - validate and recalculates live.',
+      'Change dimension or criterion weights under <b>Set weights</b> (Undo/Redo available).',
+      'Record rationale in Product context, costs in Cost, TCO and value, and evidence in Validation plan.',
+      'Export JSON to keep everything; CSV, Markdown and Print/PDF are review copies.'
+    ])
+
+    + `<h3 class="gap">Verification sequence</h3>`
+    + ol([
+      'Confirm product scope, edition, deployment and availability.',
+      'Check each must-have; obtain evidence for every Met.',
+      'Run matched workload tests: latency, throughput, recall, update visibility, concurrency, failure.',
+      'Test human, service and agent identities across object, field, path, retrieval and action controls.',
+      'Reconstruct lineage and audit from source to recommendation, approval and action.',
+      'Test lifecycle changes, backup/restore, bulk export and exit.',
+      'Record evidence dates, owners, exceptions and residual risk.'
+    ])
+    + `</div>`;
 }
 
 registerView('methodology', renderMethodology);

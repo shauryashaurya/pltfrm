@@ -1,6 +1,6 @@
 // Must-haves (stored as "gates"): filterable product x requirement matrix with bulk status changes
 import { state } from '../core/state.js';
-import { $, esc, enc } from '../core/format.js';
+import { $, esc, enc, n, sessionNote } from '../core/format.js';
 import { mustHaveSummary } from '../core/scoring.js';
 import { registerView, rerender } from '../core/registry.js';
 import { expose } from '../core/actions.js';
@@ -49,6 +49,7 @@ function setOne(encName, i, value) {
 }
 
 function renderMustHaves() {
+  const th = state.mustHaveDefaults || { met: 4, notMet: 1.5 };
   const s = state.settings, ps = filteredProducts(), as = visibleAreas(), sp = new Set(s.selectedGateProducts || []), sa = new Set(s.selectedGateAreas || []);
   const tot = ps.reduce((a, p) => { const g = mustHaveSummary(p.name); a.p += g.pass; a.f += g.fail; a.u += g.unknown; return a; }, { p: 0, f: 0, u: 0 });
   const options = v => MUST_HAVE_VALUES.map(x => `<option value="${x}" ${x === v ? 'selected' : ''}>${mustHaveLabel(x)}</option>`).join('');
@@ -58,8 +59,8 @@ function renderMustHaves() {
 
   const matrix = `<div class="matrix-wrap"><table class="matrix"><thead><tr><th class="gate-select-cell"><input class="compact-check" type="checkbox" aria-label="Select all visible rows" onchange="PB.mhSelectRows(this.checked)"></th><th>Offering</th>${as.map(x => `<th><input class="compact-check" type="checkbox" aria-label="Select ${esc(x.g.area)}" ${sa.has(x.i) ? 'checked' : ''} onchange="PB.mhToggleCol(${x.i},this.checked)"><br>${esc(x.g.area)}</th>`).join('')}</tr></thead><tbody>${ps.map(p => `<tr class="${sp.has(p.name) ? 'gate-selected' : ''}"><td class="gate-select-cell"><input class="compact-check" type="checkbox" aria-label="Select ${esc(p.name)}" ${sp.has(p.name) ? 'checked' : ''} onchange="PB.mhToggleRow('${enc(p.name)}',this.checked)"></td><td><b>${esc(p.name)}</b></td>${as.map(x => `<td><select aria-label="${esc(p.name)} ${esc(x.g.area)}" onchange="PB.mhSet('${enc(p.name)}',${x.i},this.value)">${options((state.gateStatus[p.name] || {})[x.i] || 'Unknown')}</select></td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 
-  $('mustHaves').innerHTML = `<div class="banner warn reader-only no-print"><div>Your entries update the report in this browser tab only and are cleared when the page reloads. Use <b>Export &gt; Export JSON scenario</b> or <b>Print full report / PDF</b> to keep them.</div></div><div class="card"><h2>Must-haves</h2><div class="explain"><b>What these are:</b> non-negotiable requirements a product must meet before its score matters, such as identity, audit and compliance. <b>Bulk workflow:</b> filter products and areas, select rows and columns, then apply Met, Not met, Not checked or Not applicable to their intersection. All statuses are included in JSON, CSV, Markdown and Print/PDF.</div><div class="coverage-kpi"><div><b>${tot.p}</b>met</div><div><b>${tot.f}</b>not met</div><div><b>${tot.u}</b>not checked or N/A</div><div><b>${ps.length}</b>products visible</div></div>${toolbar}${matrix}</div>`
-    + `<div class="card"><h2>What counts as evidence</h2><table><thead><tr><th>Area</th><th>Required evidence</th></tr></thead><tbody>${state.gates.map(g => `<tr><td>${esc(g.area)}</td><td>${esc(g.evidence)}</td></tr>`).join('')}</tbody></table></div>`;
+  $('mustHaves').innerHTML = `<div class="card"><h2>Must-haves</h2><ul class="explain explain-list"><li>Non-negotiable requirements, checked before scores matter.</li><li><b>Defaults</b> come from the criterion scores behind each must-have: Met when the weakest is ${n(th.met)}+, Not met at ${n(th.notMet)} or below, Not checked in between. Not applicable when the product's scope caps every one of those criteria.</li><li><b>Bulk edit:</b> filter, select rows and columns, then apply a status to their intersection.</li></ul><div class="coverage-kpi"><div><b>${tot.p}</b>met</div><div><b>${tot.f}</b>not met</div><div><b>${tot.u}</b>not checked or N/A</div><div><b>${ps.length}</b>products visible</div></div>${toolbar}${matrix}</div>`
+    + `<div class="card"><h2>What counts as evidence</h2><table><thead><tr><th>Area</th><th>Required evidence</th></tr></thead><tbody>${state.gates.map(g => `<tr><td>${esc(g.area)}</td><td>${esc(g.evidence)}</td></tr>`).join('')}</tbody></table></div>${sessionNote()}`;
 }
 
 registerView('mustHaves', renderMustHaves);

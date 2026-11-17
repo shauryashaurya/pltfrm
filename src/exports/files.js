@@ -1,10 +1,12 @@
 // File exports (JSON, CSV), JSON import, and browser save/load/reset of the scenario
 import { state, seed, setState, resetState, storageGet, storageSet } from '../core/state.js';
 import { dl, toCSV, n } from '../core/format.js';
-import { dims, allResults, tco } from '../core/scoring.js';
+import { dims, DIMENSIONS, allResults, tco, displayValue, riskScore } from '../core/scoring.js';
+import { tradeoffs, discriminating, riskRows } from '../core/analysis.js';
+import { migrateRenames } from '../data/model.js';
 import { renderAll } from '../core/registry.js';
 import { expose } from '../core/actions.js';
-import { STORAGE_KEY, LEGACY_STORAGE_KEYS, EXPORT_FOOTER, mustHaveLabel } from '../config.js';
+import { STORAGE_KEY, LEGACY_STORAGE_KEYS, EXPORT_FOOTER, PRODUCT_RENAMES, mustHaveLabel } from '../config.js';
 import { askConfirm, notify } from '../ui/dialog.js';
 
 const included = () => state.products.filter(p => !p.hidden);
@@ -15,7 +17,13 @@ export function exportConfig() { dl('platform-study-scenario.json', JSON.stringi
 // One long CSV with Summary, TCO and MustHave sections; columns are the union of all section keys
 export function exportResultsCSV() {
   const z = [], add = (Section, o) => z.push({ Section, ...o });
-  allResults().forEach(r => add('Summary', { Offering: r.name, Category: r.category, Technical: n(r.t), Business: n(r.b), AI: n(r.a), Economics: n(r.o), DomainFit: n(r.d), AdoptionValue: n(r.v), Composite6D: n(r.c), Confidence: r.confidence, EvidenceAdjusted: n(r.adjusted) }));
+  const rows = allResults();
+  rows.forEach(r => add('Summary', { Offering: r.name, Scope: r.scope, Category: r.category, ...Object.fromEntries(DIMENSIONS.map(d => [d.csv, n(r[d.letter])])), Composite: n(r.c), Confidence: r.confidence, EvidenceAdjusted: n(r.adjusted) }));
+  // Risk table in the report's sort order, the focus-vs-benchmark trade-offs and the most discriminating criteria
+  riskRows(rows, { all: true }).list.forEach(r => add('Risk', { Offering: r.name, Scope: r.scope, Composite: n(displayValue(r)), DeliveryUncertainty: n(riskScore(r, 'deliveryUncertainty')), ConcentrationRisk: n(riskScore(r, 'concentrationRisk')), BuyerReadinessDependency: n(riskScore(r, 'buyerReadinessDependency')), CombinedRisk: n(riskScore(r, 'combined')), P50Months: r.risk.p50Months || '', P90Months: r.risk.p90Months || '' }));
+  const T = tradeoffs(rows);
+  if (T) T.groups.forEach(g => g.list.forEach(x => add('TradeOff', { Focus: T.focus.name, Benchmark: T.bench.name, Dimension: dims[x.dk], Criterion: x.c.name, FocusScore: x.fv, BenchmarkScore: x.bv, Higher: x.winner || 'Tie', Lead: Math.abs(x.d) })));
+  discriminating(rows).forEach(x => add('Discriminating', { Dimension: dims[x.dim], Criterion: x.c.name, Lowest: x.lo.join('; '), LowScore: x.min, Highest: x.hi.join('; '), HighScore: x.max, Mean: n(x.mean), Dispersion: n(x.sd) }));
   included().forEach(p => {
     const m = p.costModel || {}, c = tco(p.name);
     add('TCO', { Offering: p.name, Enabled: !!m.enabled, LicenseAnnual: m.licenseAnnual || 0, CloudAnnual: m.cloudAnnual || 0, SupportAnnual: m.supportAnnual || 0, ImplementationOneTime: m.implementationOneTime || 0, IntegrationOneTime: m.integrationOneTime || 0, TrainingOneTime: m.trainingOneTime || 0, OngoingFTE: m.ongoingFTE || 0, ChangeFTE: m.changeFTE || 0, OtherAnnual: m.otherAnnual || 0, ExitOneTime: m.exitOneTime || 0, LoadedFTECost: state.settings.loadedFTECost, HorizonYears: state.settings.costYears, DiscountRate: state.settings.discountRate, CashTCO: c.enabled ? c.total : '', NPV: c.enabled ? c.npv : '', Assumptions: m.notes || '' });
@@ -32,7 +40,7 @@ export function exportMustHavesCSV() {
 export function exportMethodologyCSV() {
   const rows = [];
   Object.keys(dims).forEach(d => state.criteria[d].forEach(c => rows.push([dims[d], state.dimensionWeights[d], c.name, c.weight, c.description || ''])));
-  dl('six-dimensional-methodology.csv', toCSV(['Dimension', 'Dimension weight', 'Criterion', 'Criterion weight', 'Definition'], rows), 'text/csv');
+  dl('dimensional-methodology.csv', toCSV(['Dimension', 'Dimension weight', 'Criterion', 'Criterion weight', 'Definition'], rows), 'text/csv');
 }
 
 // Validation plan and source register export every column as-is
@@ -43,6 +51,7 @@ export function exportSourcesCSV() { exportTable('official-documentation-registe
 // Import fills anything an older or partial file lacks from the seed, then replaces the state
 function normalizeImported(x) {
   if (!x.products || !x.criteria || !x.scores) throw Error('Invalid schema: products, criteria and scores are required.');
+  migrateRenames(x, PRODUCT_RENAMES);
   delete x.footer;
   x.validationPlan = x.validationPlan || seed.validationPlan;
   x.settings = { ...seed.settings, ...(x.settings || {}) };
@@ -55,8 +64,10 @@ function normalizeImported(x) {
     const sp = seed.products.find(q => q.name === p.name);
     x.scoreStatus[p.name] = x.scoreStatus[p.name] || {};
     p.notes = p.notes || '';
+    p.scope = p.scope || sp?.scope || 'Unclassified';
     p.costModel = { ...(sp?.costModel || {}), ...(p.costModel || {}) };
     p.riskOverlay = p.riskOverlay || structuredClone(sp?.riskOverlay || { deliveryUncertainty: 5, concentrationRisk: 3, buyerReadinessDependency: 5 });
+    x.gateStatus[p.name] = x.gateStatus[p.name] || structuredClone(seed.gateStatus?.[p.name] || {});
     x.scores[p.name] = x.scores[p.name] || {};
     for (const d of Object.keys(dims)) {
       x.scores[p.name][d] = x.scores[p.name][d] || structuredClone(seed.scores[p.name]?.[d] || Object.fromEntries(seed.criteria[d].map(c => [c.id, null])));

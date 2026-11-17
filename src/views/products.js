@@ -1,12 +1,16 @@
 // Step 2 controls: include/exclude products, set evidence confidence, add or delete products
 import { state } from '../core/state.js';
 import { $, esc, enc } from '../core/format.js';
-import { dims, product } from '../core/scoring.js';
+import { product } from '../core/scoring.js';
 import { registerView, rerender, renderAll } from '../core/registry.js';
 import { PB, expose } from '../core/actions.js';
 import { askConfirm, notify } from '../ui/dialog.js';
+import { SCOPES } from '../config.js';
+import { newProduct } from '../data/model.js';
 
 function renderProductList() {
+  const sel = $('newScope');
+  if (sel && !sel.options.length) sel.innerHTML = SCOPES.map(x => `<option>${esc(x)}</option>`).join('');
   const q = $('productSearch').value.toLowerCase();
   $('productList').innerHTML = state.products.filter(p => p.name.toLowerCase().includes(q)).map(p => `<div class="form-row three"><label><input type="checkbox" ${p.hidden ? '' : 'checked'} onchange="PB.toggleProduct('${enc(p.name)}',this.checked)"> ${esc(p.name)}</label><select aria-label="Evidence confidence for ${esc(p.name)}" onchange="PB.updateConfidence('${enc(p.name)}',this.value)">${Object.keys(state.confidenceFactors).map(c => `<option ${p.confidence === c ? 'selected' : ''}>${c}</option>`).join('')}</select><button class="btn danger small" type="button" onclick="PB.removeProduct('${enc(p.name)}')">Delete</button></div>`).join('');
 }
@@ -30,15 +34,12 @@ async function removeProduct(encName) {
 function addProduct() {
   const name = $('newName').value.trim();
   if (!name || product(name)) { notify('Enter a unique product name.'); return; }
-  state.products.push({ name, category: $('newCategory').value.trim() || 'User-defined', role: $('newRole').value.trim(), fit: $('newFit').value.trim(), boundary: $('newBoundary').value.trim() || 'Requires user validation', notes: $('newNotes').value.trim(), confidence: 'E', riskOverlay: { deliveryUncertainty: 5, concentrationRisk: 3, buyerReadinessDependency: 5, p50Months: 0, p90Months: 0, lowTcoFactor: .85, highTcoFactor: 1.35, notes: '' }, costModel: { enabled: false, licenseAnnual: 0, cloudAnnual: 0, supportAnnual: 0, implementationOneTime: 0, integrationOneTime: 0, trainingOneTime: 0, ongoingFTE: 0, changeFTE: 0, otherAnnual: 0, exitOneTime: 0, annualBenefit: 0, legacySavingsAnnual: 0, benefitRampMonths: 0, benefitConfidence: 50, benefitNotes: '', notes: '' } });
-  state.scores[name] = {};
-  state.scoreStatus[name] = {};
-  Object.keys(dims).forEach(d => {
-    state.scores[name][d] = {};
-    state.scoreStatus[name][d] = {};
-    state.criteria[d].forEach(c => { state.scores[name][d][c.id] = null; state.scoreStatus[name][d][c.id] = { status: 'User input required', rationale: 'New product: no packaged baseline. Enter evidence-based score.', source: '', updated: '' }; });
-  });
-  state.gateStatus[name] = {};
+  const fields = { name, scope: $('newScope').value || SCOPES[0], category: $('newCategory').value.trim(), role: $('newRole').value.trim(), fit: $('newFit').value.trim(), boundary: $('newBoundary').value.trim(), notes: $('newNotes').value.trim() };
+  const { record, scores, scoreStatus, gateStatus } = newProduct(fields, state.criteria);
+  state.products.push(record);
+  state.scores[name] = scores;
+  state.scoreStatus[name] = scoreStatus;
+  state.gateStatus[name] = gateStatus;
   ['newName', 'newCategory', 'newRole', 'newFit', 'newBoundary', 'newNotes'].forEach(id => { $(id).value = ''; });
   state.settings.focusProduct = name;
   renderAll();
