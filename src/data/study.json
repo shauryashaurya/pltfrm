@@ -1,0 +1,1281 @@
+{
+  "version": "9.0",
+  "studyTitle": "PLTFRM: Assess Your Enterprise Data Ecosystem",
+  "criteria": {
+    "technical": [
+      {
+        "id": "Architecture and workload fit",
+        "name": "Architecture and workload fit",
+        "weight": 7,
+        "description": ""
+      },
+      {
+        "id": "Horizontal scale and distributed execution",
+        "name": "Horizontal scale and distributed execution",
+        "weight": 7,
+        "description": ""
+      },
+      {
+        "id": "Concurrency and workload isolation",
+        "name": "Concurrency and workload isolation",
+        "weight": 5,
+        "description": ""
+      },
+      {
+        "id": "Ingestion, updates and index maintenance",
+        "name": "Ingestion, updates and index maintenance",
+        "weight": 4,
+        "description": ""
+      },
+      {
+        "id": "Measured performance evidence",
+        "name": "Measured performance evidence",
+        "weight": 5,
+        "description": ""
+      },
+      {
+        "id": "High availability and failover",
+        "name": "High availability and failover",
+        "weight": 6,
+        "description": ""
+      },
+      {
+        "id": "Backup, PITR and disaster recovery",
+        "name": "Backup, PITR and disaster recovery",
+        "weight": 5,
+        "description": ""
+      },
+      {
+        "id": "Observability and operability",
+        "name": "Observability and operability",
+        "weight": 4,
+        "description": ""
+      },
+      {
+        "id": "Upgrade/schema lifecycle",
+        "name": "Upgrade/schema lifecycle",
+        "weight": 4,
+        "description": ""
+      },
+      {
+        "id": "Identity federation and provisioning",
+        "name": "Identity federation and provisioning",
+        "weight": 5,
+        "description": ""
+      },
+      {
+        "id": "Fine-grained authorization",
+        "name": "Fine-grained authorization",
+        "weight": 7,
+        "description": ""
+      },
+      {
+        "id": "Encryption and network isolation",
+        "name": "Encryption and network isolation",
+        "weight": 5,
+        "description": ""
+      },
+      {
+        "id": "Auditability and evidence export",
+        "name": "Auditability and evidence export",
+        "weight": 6,
+        "description": ""
+      },
+      {
+        "id": "Compliance assurance",
+        "name": "Compliance assurance",
+        "weight": 5,
+        "description": ""
+      },
+      {
+        "id": "Governance, lineage and retention",
+        "name": "Governance, lineage and retention",
+        "weight": 6,
+        "description": ""
+      },
+      {
+        "id": "Residency and sovereignty",
+        "name": "Residency and sovereignty",
+        "weight": 5,
+        "description": ""
+      },
+      {
+        "id": "Interoperability and portability",
+        "name": "Interoperability and portability",
+        "weight": 4,
+        "description": ""
+      },
+      {
+        "id": "Enterprise support and maturity",
+        "name": "Enterprise support and maturity",
+        "weight": 6,
+        "description": ""
+      },
+      {
+        "id": "Cost governance and predictability",
+        "name": "Cost governance and predictability",
+        "weight": 4,
+        "description": ""
+      }
+    ],
+    "business": [
+      {
+        "id": "Data Modeling & Knowledge Representation",
+        "name": "Data Modeling & Knowledge Representation",
+        "weight": 11.111111,
+        "description": "Coverage only; not scale, control effectiveness or feature parity."
+      },
+      {
+        "id": "Ontology Management & Governance",
+        "name": "Ontology Management & Governance",
+        "weight": 11.111111,
+        "description": "Coverage only; not scale, control effectiveness or feature parity."
+      },
+      {
+        "id": "Data Analysis & Code Development",
+        "name": "Data Analysis & Code Development",
+        "weight": 4.444444,
+        "description": "Coverage only; not scale, control effectiveness or feature parity."
+      },
+      {
+        "id": "Data Visualization & Exploration",
+        "name": "Data Visualization & Exploration",
+        "weight": 4.444444,
+        "description": "Coverage only; not scale, control effectiveness or feature parity."
+      },
+      {
+        "id": "Data Integration & Transformation",
+        "name": "Data Integration & Transformation",
+        "weight": 11.111111,
+        "description": "Coverage only; not scale, control effectiveness or feature parity."
+      },
+      {
+        "id": "AI, ML & MLOps",
+        "name": "AI, ML & MLOps",
+        "weight": 4.444444,
+        "description": "Coverage only; not scale, control effectiveness or feature parity."
+      },
+      {
+        "id": "Data Ingestion & Connectivity",
+        "name": "Data Ingestion & Connectivity",
+        "weight": 4.444444,
+        "description": "Coverage only; not scale, control effectiveness or feature parity."
+      },
+      {
+        "id": "Security & Access Management",
+        "name": "Security & Access Management",
+        "weight": 11.111111,
+        "description": "Coverage only; not scale, control effectiveness or feature parity."
+      },
+      {
+        "id": "No-Code Application Development",
+        "name": "No-Code Application Development",
+        "weight": 7.777778,
+        "description": "Coverage only; not scale, control effectiveness or feature parity."
+      },
+      {
+        "id": "Application Deployment & Hosting",
+        "name": "Application Deployment & Hosting",
+        "weight": 7.777778,
+        "description": "Coverage only; not scale, control effectiveness or feature parity."
+      },
+      {
+        "id": "Serverless Computing",
+        "name": "Serverless Computing",
+        "weight": 4.444444,
+        "description": "Coverage only; not scale, control effectiveness or feature parity."
+      },
+      {
+        "id": "Data Discovery & Management",
+        "name": "Data Discovery & Management",
+        "weight": 4.444444,
+        "description": "Coverage only; not scale, control effectiveness or feature parity."
+      },
+      {
+        "id": "Automated Report Generation",
+        "name": "Automated Report Generation",
+        "weight": 4.444444,
+        "description": "Coverage only; not scale, control effectiveness or feature parity."
+      },
+      {
+        "id": "Data Validation & Quality Control",
+        "name": "Data Validation & Quality Control",
+        "weight": 4.444444,
+        "description": "Coverage only; not scale, control effectiveness or feature parity."
+      },
+      {
+        "id": "Data Provenance & Traceability",
+        "name": "Data Provenance & Traceability",
+        "weight": 4.444444,
+        "description": "Coverage only; not scale, control effectiveness or feature parity."
+      }
+    ],
+    "ai": [
+      {
+        "id": "Governed enterprise grounding",
+        "name": "Governed enterprise grounding",
+        "weight": 12,
+        "description": ""
+      },
+      {
+        "id": "Hybrid retrieval and context assembly",
+        "name": "Hybrid retrieval and context assembly",
+        "weight": 9,
+        "description": ""
+      },
+      {
+        "id": "Typed agent tools and actions",
+        "name": "Typed agent tools and actions",
+        "weight": 11,
+        "description": ""
+      },
+      {
+        "id": "Agent authorization and least privilege",
+        "name": "Agent authorization and least privilege",
+        "weight": 10,
+        "description": ""
+      },
+      {
+        "id": "Human approval and operational controls",
+        "name": "Human approval and operational controls",
+        "weight": 7,
+        "description": ""
+      },
+      {
+        "id": "Evaluation, tracing and audit",
+        "name": "Evaluation, tracing and audit",
+        "weight": 10,
+        "description": ""
+      },
+      {
+        "id": "Model/provider flexibility",
+        "name": "Model/provider flexibility",
+        "weight": 6,
+        "description": ""
+      },
+      {
+        "id": "Memory and state management",
+        "name": "Memory and state management",
+        "weight": 7,
+        "description": ""
+      },
+      {
+        "id": "Real-time and event context",
+        "name": "Real-time and event context",
+        "weight": 6,
+        "description": ""
+      },
+      {
+        "id": "Multi-agent/process orchestration",
+        "name": "Multi-agent/process orchestration",
+        "weight": 6,
+        "description": ""
+      },
+      {
+        "id": "Developer extensibility and standards",
+        "name": "Developer extensibility and standards",
+        "weight": 6,
+        "description": ""
+      },
+      {
+        "id": "Production scale and isolation",
+        "name": "Production scale and isolation",
+        "weight": 6,
+        "description": ""
+      },
+      {
+        "id": "Emergent value option set",
+        "name": "Emergent value option set",
+        "weight": 4,
+        "description": ""
+      }
+    ],
+    "economics": [
+      {
+        "id": "Commercial acquisition and pricing transparency",
+        "name": "Commercial acquisition and pricing transparency",
+        "weight": 6,
+        "description": "Pricing, commitments and contracted-spend predictability."
+      },
+      {
+        "id": "Initial implementation effort",
+        "name": "Initial implementation effort",
+        "weight": 10,
+        "description": "Effort to establish controlled production environments, model and first use case."
+      },
+      {
+        "id": "Service stitching and integration burden",
+        "name": "Service stitching and integration burden",
+        "weight": 11,
+        "description": "Complexity of services, identities, connectors, policies, metadata and hand-offs."
+      },
+      {
+        "id": "Time to first production outcome",
+        "name": "Time to first production outcome",
+        "weight": 10,
+        "description": "Elapsed time and iteration to a controlled production outcome, not a prototype."
+      },
+      {
+        "id": "Custom code and configuration volume",
+        "name": "Custom code and configuration volume",
+        "weight": 10,
+        "description": "Custom application, pipeline, integration, policy, infrastructure, monitoring and test code/configuration."
+      },
+      {
+        "id": "Security, governance and audit engineering effort",
+        "name": "Security, governance and audit engineering effort",
+        "weight": 8,
+        "description": "Custom engineering for authorization, lineage, audit, retention and compliance."
+      },
+      {
+        "id": "Ongoing code maintenance and regression burden",
+        "name": "Ongoing code maintenance and regression burden",
+        "weight": 10,
+        "description": "Maintenance, dependencies, refactoring, tests and cross-service regression."
+      },
+      {
+        "id": "Ongoing platform engineering and operations",
+        "name": "Ongoing platform engineering and operations",
+        "weight": 8,
+        "description": "Recurring SRE/platform monitoring, incident, capacity, backup and environment work."
+      },
+      {
+        "id": "Change and iteration economics",
+        "name": "Change and iteration economics",
+        "weight": 8,
+        "description": "Cost and cycle time for new sources, objects, workflows, applications, models and agents."
+      },
+      {
+        "id": "Upgrade and cross-service regression burden",
+        "name": "Upgrade and cross-service regression burden",
+        "weight": 5,
+        "description": "Coordination and testing as products, APIs and runtimes change."
+      },
+      {
+        "id": "Consumption and cost predictability",
+        "name": "Consumption and cost predictability",
+        "weight": 5,
+        "description": "Forecasting, attribution, constraint and optimization of consumption."
+      },
+      {
+        "id": "Specialist skills and services dependency",
+        "name": "Specialist skills and services dependency",
+        "weight": 4,
+        "description": "Dependence on scarce skills, integrators, vendor services or specialist teams."
+      },
+      {
+        "id": "Exit and migration economics",
+        "name": "Exit and migration economics",
+        "weight": 5,
+        "description": "Cost to export and migrate data, logic, applications, controls and history."
+      }
+    ],
+    "domain": [
+      {
+        "id": "Priority use-case fit",
+        "name": "Priority use-case fit",
+        "weight": 20,
+        "description": "Direct fit to the buyer’s named use cases, decisions, users and operating cadence."
+      },
+      {
+        "id": "Industry/domain data-model maturity",
+        "name": "Industry/domain data-model maturity",
+        "weight": 10,
+        "description": "Availability and maturity of relevant object models, semantics and domain relationships."
+      },
+      {
+        "id": "Domain applications and reusable patterns",
+        "name": "Domain applications and reusable patterns",
+        "weight": 12,
+        "description": "Relevant packaged applications, templates, workflows, accelerators and implementation patterns."
+      },
+      {
+        "id": "Comparable production references",
+        "name": "Comparable production references",
+        "weight": 9,
+        "description": "Evidence from deployments comparable in industry, scope, scale, controls and workflow."
+      },
+      {
+        "id": "Operational workflow and decision-cadence fit",
+        "name": "Operational workflow and decision-cadence fit",
+        "weight": 12,
+        "description": "Fit to the human and automated decisions, latency and workflow required by the scenario."
+      },
+      {
+        "id": "Domain-specific data and relationship support",
+        "name": "Domain-specific data and relationship support",
+        "weight": 8,
+        "description": "Support for the scenario’s documents, events, geospatial, graph, telemetry, transactions or multimodal data."
+      },
+      {
+        "id": "Domain regulatory and security fit",
+        "name": "Domain regulatory and security fit",
+        "weight": 6,
+        "description": "Fit to industry-specific policy, records, explainability, validation and regulatory obligations."
+      },
+      {
+        "id": "Real-time and event requirement fit",
+        "name": "Real-time and event requirement fit",
+        "weight": 6,
+        "description": "Ability to meet the scenario’s event, streaming and freshness requirements."
+      },
+      {
+        "id": "Analytics simulation and optimization fit",
+        "name": "Analytics simulation and optimization fit",
+        "weight": 5,
+        "description": "Fit to required forecasting, optimization, simulation, graph analytics or decision intelligence."
+      },
+      {
+        "id": "Extension beyond initial use case",
+        "name": "Extension beyond initial use case",
+        "weight": 12,
+        "description": "Ability to reuse the implementation for adjacent use cases without rebuilding core semantics and controls."
+      }
+    ],
+    "adoption": [
+      {
+        "id": "Measurable business-outcome alignment",
+        "name": "Measurable business-outcome alignment",
+        "weight": 15,
+        "description": "Clear connection between platform use, operational behavior and measurable outcomes."
+      },
+      {
+        "id": "End-user usability and workflow fit",
+        "name": "End-user usability and workflow fit",
+        "weight": 12,
+        "description": "Fit to user roles, tasks, decision context and existing or redesigned workflows."
+      },
+      {
+        "id": "Time to user competency",
+        "name": "Time to user competency",
+        "weight": 8,
+        "description": "Time and effort for target users, administrators and builders to become effective."
+      },
+      {
+        "id": "Product management and ownership model",
+        "name": "Product management and ownership model",
+        "weight": 8,
+        "description": "Support for durable business ownership, backlog, release and outcome management."
+      },
+      {
+        "id": "Process-change feasibility",
+        "name": "Process-change feasibility",
+        "weight": 8,
+        "description": "Practicality of required process, role, control and accountability changes."
+      },
+      {
+        "id": "Human-in-the-loop accountability",
+        "name": "Human-in-the-loop accountability",
+        "weight": 8,
+        "description": "Support for approvals, review, override, explanation and accountable decisions."
+      },
+      {
+        "id": "Adoption and outcome measurement",
+        "name": "Adoption and outcome measurement",
+        "weight": 8,
+        "description": "Ability to instrument usage, behavior, operational KPIs and outcome attribution."
+      },
+      {
+        "id": "Reuse across teams and use cases",
+        "name": "Reuse across teams and use cases",
+        "weight": 8,
+        "description": "Ability to reuse semantics, components, policies and delivery patterns across teams."
+      },
+      {
+        "id": "Business-user configurability",
+        "name": "Business-user configurability",
+        "weight": 7,
+        "description": "Ability for authorized business users to configure views, workflows and rules without unsafe changes."
+      },
+      {
+        "id": "Training and enablement requirement",
+        "name": "Training and enablement requirement",
+        "weight": 6,
+        "description": "Favorability of training, enablement and support requirements."
+      },
+      {
+        "id": "Accessibility and localization",
+        "name": "Accessibility and localization",
+        "weight": 4,
+        "description": "Support for accessibility, languages and regional user requirements."
+      },
+      {
+        "id": "Legacy process and tool retirement",
+        "name": "Legacy process and tool retirement",
+        "weight": 4,
+        "description": "Ability to retire fragmented tools, reports and manual process steps."
+      },
+      {
+        "id": "Benefit durability and continuous improvement",
+        "name": "Benefit durability and continuous improvement",
+        "weight": 4,
+        "description": "Ability to sustain benefits through feedback, measurement and iterative improvement."
+      }
+    ],
+    "career": [
+      {
+        "id": "Labour-market demand",
+        "name": "Labour-market demand",
+        "weight": 20,
+        "description": "Share of job postings that name the skill, relative to peers."
+      },
+      {
+        "id": "Pay premium",
+        "name": "Pay premium",
+        "weight": 15,
+        "description": "Salary premium over a baseline data or engineering role."
+      },
+      {
+        "id": "Skill longevity and vendor trajectory",
+        "name": "Skill longevity and vendor trajectory",
+        "weight": 15,
+        "description": "Likelihood the skill is still valued in 3-5 years: vendor health, momentum, standards."
+      },
+      {
+        "id": "Skill transferability",
+        "name": "Skill transferability",
+        "weight": 15,
+        "description": "How far the skill carries to other tools: open standards, SQL/Python, portable concepts."
+      },
+      {
+        "id": "Learning resources and certification",
+        "name": "Learning resources and certification",
+        "weight": 10,
+        "description": "Official courses, certifications, documentation and third-party training."
+      },
+      {
+        "id": "Community size and activity",
+        "name": "Community size and activity",
+        "weight": 10,
+        "description": "User groups, forums, conferences, Q&A volume."
+      },
+      {
+        "id": "Open-source engagement",
+        "name": "Open-source engagement",
+        "weight": 10,
+        "description": "Open-source core or ecosystem a practitioner can contribute to and learn from."
+      },
+      {
+        "id": "Hands-on access",
+        "name": "Hands-on access",
+        "weight": 5,
+        "description": "Free tier, trial, community edition or local install for self-learning."
+      }
+    ]
+  },
+  "confidenceFactors": {
+    "A": 1,
+    "B": 0.9,
+    "C": 0.75,
+    "D": 0.5,
+    "E": 0.25
+  },
+  "dimensionWeights": {
+    "technical": 20,
+    "business": 20,
+    "ai": 12,
+    "economics": 16,
+    "domain": 24,
+    "adoption": 8,
+    "career": 0
+  },
+  "scaleCriteria": [
+    "Horizontal scale and distributed execution",
+    "Concurrency and workload isolation",
+    "Ingestion, updates and index maintenance",
+    "Measured performance evidence"
+  ],
+  "gates": [
+    {
+      "area": "Identity",
+      "evidence": "Federation, provisioning, service identities and emergency access",
+      "basis": [
+        {
+          "dim": "technical",
+          "id": "Identity federation and provisioning"
+        }
+      ]
+    },
+    {
+      "area": "Authorization",
+      "evidence": "Object/row, property/column, relationship/path and action policy",
+      "basis": [
+        {
+          "dim": "technical",
+          "id": "Fine-grained authorization"
+        }
+      ]
+    },
+    {
+      "area": "Retrieval security",
+      "evidence": "Policy-aware graph, lexical and vector candidate generation",
+      "basis": [
+        {
+          "dim": "ai",
+          "id": "Governed enterprise grounding"
+        },
+        {
+          "dim": "ai",
+          "id": "Hybrid retrieval and context assembly"
+        }
+      ]
+    },
+    {
+      "area": "Cryptography/network",
+      "evidence": "Encryption, key options, secrets and private connectivity",
+      "basis": [
+        {
+          "dim": "technical",
+          "id": "Encryption and network isolation"
+        }
+      ]
+    },
+    {
+      "area": "Audit",
+      "evidence": "Admin, read, write, export, prompt, retrieval, tool, approval and action events",
+      "basis": [
+        {
+          "dim": "technical",
+          "id": "Auditability and evidence export"
+        }
+      ]
+    },
+    {
+      "area": "Compliance",
+      "evidence": "Current independent evidence scoped to service, region and deployment",
+      "basis": [
+        {
+          "dim": "technical",
+          "id": "Compliance assurance"
+        }
+      ]
+    },
+    {
+      "area": "Privacy/records",
+      "evidence": "Retention, deletion and legal hold including embeddings, caches and backups",
+      "basis": [
+        {
+          "dim": "technical",
+          "id": "Governance, lineage and retention"
+        }
+      ]
+    },
+    {
+      "area": "Availability",
+      "evidence": "SLA, HA, tested restore, RPO/RTO and disaster recovery",
+      "basis": [
+        {
+          "dim": "technical",
+          "id": "High availability and failover"
+        },
+        {
+          "dim": "technical",
+          "id": "Backup, PITR and disaster recovery"
+        }
+      ]
+    },
+    {
+      "area": "Lifecycle",
+      "evidence": "Ontology/schema/model/prompt versioning, promotion and rollback",
+      "basis": [
+        {
+          "dim": "technical",
+          "id": "Upgrade/schema lifecycle"
+        }
+      ]
+    },
+    {
+      "area": "Scale",
+      "evidence": "Validated volume, concurrency, update rate, recall, p95/p99 and failure behavior",
+      "basis": [
+        {
+          "dim": "technical",
+          "id": "Horizontal scale and distributed execution"
+        },
+        {
+          "dim": "technical",
+          "id": "Measured performance evidence"
+        }
+      ]
+    },
+    {
+      "area": "Operations",
+      "evidence": "Telemetry, capacity, incident response and support escalation",
+      "basis": [
+        {
+          "dim": "technical",
+          "id": "Observability and operability"
+        },
+        {
+          "dim": "technical",
+          "id": "Enterprise support and maturity"
+        }
+      ]
+    },
+    {
+      "area": "Portability",
+      "evidence": "Bulk export of model, data, links, vectors, policy, lineage and audit",
+      "basis": [
+        {
+          "dim": "technical",
+          "id": "Interoperability and portability"
+        }
+      ]
+    },
+    {
+      "area": "AI safety",
+      "evidence": "Least privilege, approval, bounded tools, idempotency, evaluation and kill controls",
+      "basis": [
+        {
+          "dim": "ai",
+          "id": "Agent authorization and least privilege"
+        },
+        {
+          "dim": "ai",
+          "id": "Human approval and operational controls"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "compositeMethod": "geometric",
+    "unknownScoreTreatment": "zero",
+    "showEvidenceAdjusted": true,
+    "shortlistThreshold": 70,
+    "benchmarkProduct": "microsoft-fabric-fabric-iq-purview-power-platform",
+    "focusProduct": "palantir-foundry",
+    "tradeoffDimension": "technical",
+    "heatmapDimension": "technical",
+    "heatmapMode": "absolute",
+    "chartCategory": "All",
+    "showScatterLabels": true,
+    "costYears": 3,
+    "discountRate": 8,
+    "loadedFTECost": 180000,
+    "costCurrency": "USD",
+    "tcoMode": "undiscounted",
+    "scenarioName": "General cross-enterprise operational platform",
+    "industry": "Cross-industry / not specified",
+    "priorityUseCases": "Operational ontology, governed data applications, analytics and agentic workflows",
+    "domainProfileNote": "Baseline domain-fit scores assume a broad cross-enterprise operating-platform scenario. Replace them for the named industry and use case.",
+    "benefitYears": 3,
+    "showScoreStatus": true,
+    "scoreStatusFilter": "All",
+    "gateProductFilter": "",
+    "gateStatusFilter": "All",
+    "gateAreaFilter": "All",
+    "selectedGateProducts": [],
+    "selectedGateAreas": [],
+    "riskMeasure": "combined",
+    "radarScale": "zoom",
+    "radarCount": 7,
+    "scoreVersion": "v2",
+    "scopeFilter": "All",
+    "heatmapScope": "",
+    "heatmapProducts": [],
+    "riskSortKey": "composite",
+    "riskSortDir": "desc",
+    "riskFilter": "",
+    "riskHidden": [],
+    "scaleTB": "fit",
+    "scaleEcon": "fit",
+    "scaleRisk": "fit"
+  },
+  "sources": [
+    {
+      "Product / stack": "Palantir Foundry",
+      "Official documentation": "https://www.palantir.com/docs/foundry/",
+      "Scope / caveat": "Ontology, actions, Workshop, pipelines, security and platform docs"
+    },
+    {
+      "Product / stack": "HelixDB / Helix Foundry",
+      "Official documentation": "https://docs.helix-db.com/",
+      "Scope / caveat": "Graph/vector database and newly released Foundry layer; enterprise evidence should be supplied by vendor"
+    },
+    {
+      "Product / stack": "AWS Neptune",
+      "Official documentation": "https://docs.aws.amazon.com/neptune/",
+      "Scope / caveat": "Graph database capabilities"
+    },
+    {
+      "Product / stack": "AWS DataZone",
+      "Official documentation": "https://docs.aws.amazon.com/datazone/",
+      "Scope / caveat": "Catalog/governance/data products"
+    },
+    {
+      "Product / stack": "Google Dataplex",
+      "Official documentation": "https://cloud.google.com/dataplex/docs",
+      "Scope / caveat": "Universal Catalog, governance and data quality"
+    },
+    {
+      "Product / stack": "Google Spanner Graph",
+      "Official documentation": "https://cloud.google.com/spanner/docs/graph/overview",
+      "Scope / caveat": "Property graph capabilities"
+    },
+    {
+      "Product / stack": "Microsoft Fabric",
+      "Official documentation": "https://learn.microsoft.com/fabric/",
+      "Scope / caveat": "Fabric, OneLake, Real-Time Intelligence and governance integration"
+    },
+    {
+      "Product / stack": "Microsoft Purview",
+      "Official documentation": "https://learn.microsoft.com/purview/",
+      "Scope / caveat": "Catalog, lineage, governance and compliance"
+    },
+    {
+      "Product / stack": "Azure AI Foundry",
+      "Official documentation": "https://learn.microsoft.com/azure/ai-foundry/",
+      "Scope / caveat": "AI application, model and agent platform; not itself an ontology database"
+    },
+    {
+      "Product / stack": "Azure Digital Twins",
+      "Official documentation": "https://learn.microsoft.com/azure/digital-twins/",
+      "Scope / caveat": "DTDL and twin graph; lifecycle/current roadmap should be confirmed"
+    },
+    {
+      "Product / stack": "Databricks Unity Catalog",
+      "Official documentation": "https://docs.databricks.com/aws/en/data-governance/unity-catalog/",
+      "Scope / caveat": "Governance, lineage and access control"
+    },
+    {
+      "Product / stack": "Snowflake",
+      "Official documentation": "https://docs.snowflake.com/",
+      "Scope / caveat": "Data platform, semantic, Cortex and governance capabilities"
+    },
+    {
+      "Product / stack": "Stardog",
+      "Official documentation": "https://docs.stardog.com/",
+      "Scope / caveat": "RDF/OWL, virtual graph and reasoning"
+    },
+    {
+      "Product / stack": "Ontotext GraphDB",
+      "Official documentation": "https://graphdb.ontotext.com/documentation/",
+      "Scope / caveat": "RDF/OWL, SPARQL and reasoning"
+    },
+    {
+      "Product / stack": "TypeDB",
+      "Official documentation": "https://typedb.com/docs",
+      "Scope / caveat": "Typed entities, relations and rules"
+    },
+    {
+      "Product / stack": "Neo4j",
+      "Official documentation": "https://neo4j.com/docs/",
+      "Scope / caveat": "Property graph, Cypher, vector and enterprise operations"
+    },
+    {
+      "Product / stack": "RelationalAI",
+      "Official documentation": "https://docs.relational.ai/",
+      "Scope / caveat": "Declarative relational knowledge graph/logic; deployment context to verify"
+    },
+    {
+      "Product / stack": "Salesforce Data Cloud",
+      "Official documentation": "https://help.salesforce.com/s/articleView?id=data.c360_a.htm",
+      "Scope / caveat": "Data model, identity, governance and Agentforce integration"
+    },
+    {
+      "Product / stack": "Lance / LanceDB",
+      "Official documentation": "https://docs.lancedb.com/",
+      "Scope / caveat": "Lance-backed multimodal/vector database; not a full operational ontology"
+    },
+    {
+      "Product / stack": "Milvus",
+      "Official documentation": "https://milvus.io/docs",
+      "Scope / caveat": "Distributed vector database"
+    },
+    {
+      "Product / stack": "Qdrant",
+      "Official documentation": "https://qdrant.tech/documentation/",
+      "Scope / caveat": "Vector database"
+    },
+    {
+      "Product / stack": "Weaviate",
+      "Official documentation": "https://docs.weaviate.io/",
+      "Scope / caveat": "Vector database with schema and hybrid retrieval"
+    },
+    {
+      "Product / stack": "Vespa",
+      "Official documentation": "https://docs.vespa.ai/",
+      "Scope / caveat": "Distributed retrieval, ranking and tensor computation"
+    },
+    {
+      "Product / stack": "ClickHouse",
+      "Official documentation": "https://clickhouse.com/docs",
+      "Scope / caveat": "Analytical database and vector/search capabilities"
+    },
+    {
+      "Product / stack": "DuckDB",
+      "Official documentation": "https://duckdb.org/docs/",
+      "Scope / caveat": "Embedded analytical database"
+    },
+    {
+      "Product / stack": "MotherDuck",
+      "Official documentation": "https://motherduck.com/docs/",
+      "Scope / caveat": "Cloud service based on DuckDB"
+    },
+    {
+      "Product / stack": "Kuzu",
+      "Official documentation": "https://docs.kuzudb.com/",
+      "Scope / caveat": "Embedded property graph database"
+    },
+    {
+      "Product / stack": "PuppyGraph",
+      "Official documentation": "https://docs.puppygraph.com/",
+      "Scope / caveat": "Graph query layer over external analytical/lakehouse data"
+    },
+    {
+      "Product / stack": "Apache Spark",
+      "Official documentation": "https://spark.apache.org/docs/latest/",
+      "Scope / caveat": "Distributed batch/stream processing"
+    },
+    {
+      "Product / stack": "Apache Flink",
+      "Official documentation": "https://nightlies.apache.org/flink/flink-docs-stable/",
+      "Scope / caveat": "Distributed stateful stream processing"
+    },
+    {
+      "Product / stack": "Ray",
+      "Official documentation": "https://docs.ray.io/",
+      "Scope / caveat": "Distributed compute and AI runtime"
+    },
+    {
+      "Product / stack": "Daft",
+      "Official documentation": "https://docs.daft.ai/",
+      "Scope / caveat": "Distributed multimodal dataframe processing"
+    },
+    {
+      "Product / stack": "Apache DataFusion",
+      "Official documentation": "https://datafusion.apache.org/user-guide/introduction.html",
+      "Scope / caveat": "Arrow-native query engine"
+    },
+    {
+      "Product / stack": "Apache Ballista",
+      "Official documentation": "https://datafusion.apache.org/ballista/",
+      "Scope / caveat": "Distributed DataFusion execution; maturity/current status should be verified"
+    },
+    {
+      "Product / stack": "Celonis",
+      "Official documentation": "https://www.celonis.com/news/article/finally-enterprise-ai-gets-the-context-it-needs-to-succeed-celonis-next-2026",
+      "Scope / caveat": "Celonis:Next 2026 announcements (Data Core, Orchestration Engine, AgentC); vendor-sourced"
+    },
+    {
+      "Product / stack": "Amazon Quick",
+      "Official documentation": "https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-quick/",
+      "Scope / caveat": "Autonomous agents and multi-dataset analytics, June 2026"
+    },
+    {
+      "Product / stack": "Amazon Quick",
+      "Official documentation": "https://aws.amazon.com/about-aws/whats-new/2026/01/3p-agent-in-quick",
+      "Scope / caveat": "Third-party agents and actions library, January 2026"
+    },
+    {
+      "Product / stack": "Cognite Atlas AI",
+      "Official documentation": "https://www.cognite.com/en/product/atlas",
+      "Scope / caveat": "Industrial agent workbench over the industrial knowledge graph"
+    },
+    {
+      "Product / stack": "Cognite Data Fusion",
+      "Official documentation": "https://www.cognite.com/en/resources/blog/cognite-september-2026-release",
+      "Scope / caveat": "Industrial MCP and zero-copy inbound (preview), September 2026"
+    },
+    {
+      "Product / stack": "Dataiku",
+      "Official documentation": "https://www.dataiku.com/company/news/dataiku-expands-cobuild-capability",
+      "Scope / caveat": "Cobuild expansion and AI Catalog, September 2026"
+    },
+    {
+      "Product / stack": "Datadog Bits AI",
+      "Official documentation": "https://www.datadoghq.com/product/bits-ai/",
+      "Scope / caveat": "Bits AI agents; DASH 2026 added Agent Builder, Agent Console and Evals"
+    },
+    {
+      "Product / stack": "Oracle AI Database 26ai",
+      "Official documentation": "https://blogs.oracle.com/database/introducing-private-agent-factory-unlocking-the-agentic-ai-potential-in-enterprises-with-oracle-ai-database-26ai",
+      "Scope / caveat": "Private Agent Factory and Select AI Agent"
+    },
+    {
+      "Product / stack": "Oracle AI Agent Studio",
+      "Official documentation": "https://oracle.com/news/announcement/oracle-ai-agent-studio-for-industry-applications-helps-accelerate-business-outcomes-2026-10-21",
+      "Scope / caveat": "Industry applications edition announced October 2026, availability within 12 months"
+    },
+    {
+      "Product / stack": "IBM watsonx Orchestrate",
+      "Official documentation": "https://www.ibm.com/products/watsonx-orchestrate",
+      "Scope / caveat": "Agent builder and orchestrator agent; confirm current editions"
+    },
+    {
+      "Product / stack": "Microsoft Fabric IQ",
+      "Official documentation": "https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Fabric-IQ-The-Semantic-Foundation-for-Enterprise-AI/ba-p/5172473",
+      "Scope / caveat": "Ontology and semantic foundation; check preview/GA per component"
+    },
+    {
+      "Product / stack": "Databricks Genie",
+      "Official documentation": "https://www.databricks.com/blog/introducing-genie-one-genie-ontology-and-genie-agents",
+      "Scope / caveat": "Genie One, Genie Agents and Genie Ontology"
+    }
+  ],
+  "validationPlan": [
+    {
+      "Area": "Architecture",
+      "Test": "Target deployment architecture",
+      "Required measurement/evidence": "Data/control plane, failure domains, tenancy, data movement, external dependencies, egress and operating ownership"
+    },
+    {
+      "Area": "Scale",
+      "Test": "Point lookup and filtered query",
+      "Required measurement/evidence": "p50/p95/p99 latency and throughput at target concurrency and data volume"
+    },
+    {
+      "Area": "Scale",
+      "Test": "Graph traversal",
+      "Required measurement/evidence": "1-hop and 3–6-hop tests over low-, medium- and high-degree vertices; cross-partition fan-out"
+    },
+    {
+      "Area": "Scale",
+      "Test": "Vector retrieval",
+      "Required measurement/evidence": "Recall@k, p95/p99 latency, index build/update time and cost at required vector count"
+    },
+    {
+      "Area": "Scale",
+      "Test": "Policy-aware hybrid retrieval",
+      "Required measurement/evidence": "Vector + text + graph + structured filters at 1%, 10% and 50% selectivity; leakage tests"
+    },
+    {
+      "Area": "Scale",
+      "Test": "Ingestion and updates",
+      "Required measurement/evidence": "Objects, edges, events and embeddings per second; update-to-query visibility and backfill behavior"
+    },
+    {
+      "Area": "Reliability",
+      "Test": "Failure and recovery",
+      "Required measurement/evidence": "Node/zone/control-plane failures during reads and writes; measured RPO/RTO and restored-index consistency"
+    },
+    {
+      "Area": "Security",
+      "Test": "Authorization",
+      "Required measurement/evidence": "Object, field, relationship/path and action tests for human, service and agent identities"
+    },
+    {
+      "Area": "Security",
+      "Test": "Information leakage",
+      "Required measurement/evidence": "Hidden-node counts, forbidden paths, ANN ranking influence, caches, logs, prompts and derived-property leakage"
+    },
+    {
+      "Area": "Audit",
+      "Test": "End-to-end reconstruction",
+      "Required measurement/evidence": "Source value → transformation → ontology object → retrieval → recommendation → approval → external action"
+    },
+    {
+      "Area": "Lifecycle",
+      "Test": "Change management",
+      "Required measurement/evidence": "Breaking schema/ontology/model/prompt change, compatibility check, staged promotion and rollback"
+    },
+    {
+      "Area": "AI/agentic",
+      "Test": "Tool safety",
+      "Required measurement/evidence": "Least privilege, typed validation, approval, idempotency, timeout, retry, compensation and kill switch"
+    },
+    {
+      "Area": "AI/agentic",
+      "Test": "Evaluation",
+      "Required measurement/evidence": "Groundedness, task success, policy violations, unsafe action rate, latency, cost and regression tests"
+    },
+    {
+      "Area": "Portability",
+      "Test": "Exit test",
+      "Required measurement/evidence": "Bulk export of schema/ontology, objects, links, vectors, history, policies, lineage, audit and application artifacts"
+    },
+    {
+      "Area": "Commercial",
+      "Test": "Three-year operating model",
+      "Required measurement/evidence": "License/consumption, infrastructure, integration, support, staffing, egress and migration/exit costs"
+    },
+    {
+      "Area": "Operating economics",
+      "Test": "Integrated build-vs-buy work breakdown",
+      "Required measurement/evidence": "Inventory products/services, interfaces, identity boundaries, control implementations, delivery roles, iterations, elapsed time and one-time cost."
+    },
+    {
+      "Area": "Operating economics",
+      "Test": "Run-state operating model",
+      "Required measurement/evidence": "Annual license, cloud consumption, support, SRE/platform/data/security FTE, incident, upgrade, regression and enhancement capacity."
+    },
+    {
+      "Area": "Operating economics",
+      "Test": "Scenario TCO and sensitivity",
+      "Required measurement/evidence": "3- and 5-year cash and discounted TCO; workload growth, staffing, price, utilization, implementation delay and contingency sensitivity."
+    },
+    {
+      "Area": "Operating economics",
+      "Test": "Change-unit economics",
+      "Required measurement/evidence": "Measured cost and cycle time to add a source, object type, pipeline, governed application, model and agent action."
+    },
+    {
+      "Area": "Domain fit",
+      "Test": "Scenario-specific use-case demonstration",
+      "Required measurement/evidence": "Execute representative end-to-end workflows with target users, data, decision cadence, domain controls and outcome measures."
+    },
+    {
+      "Area": "Domain fit",
+      "Test": "Comparable-reference review",
+      "Required measurement/evidence": "Reference similarity by industry, workflow, data, scale, controls, deployment, delivery duration and achieved outcomes."
+    },
+    {
+      "Area": "Adoption/value",
+      "Test": "User workflow and competency study",
+      "Required measurement/evidence": "Task completion, time to competency, usability, exception handling, approval accountability and role-change effort."
+    },
+    {
+      "Area": "Adoption/value",
+      "Test": "Outcome measurement and benefit case",
+      "Required measurement/evidence": "Baseline KPI, target, attribution method, owner, measurement cadence, ramp, confidence and benefit sensitivity."
+    },
+    {
+      "Area": "Risk",
+      "Test": "Delivery uncertainty and P50/P90 plan",
+      "Required measurement/evidence": "Dependency register, unproven interfaces, critical path, reference-class estimate, P50/P90 schedule and cost ranges."
+    },
+    {
+      "Area": "Risk",
+      "Test": "Concentration and exit assessment",
+      "Required measurement/evidence": "Proprietary artifacts, cloud/vendor/partner dependencies, export completeness, contractual exposure, skills market and tested exit plan."
+    },
+    {
+      "Area": "Buyer readiness",
+      "Test": "Readiness assessment",
+      "Required measurement/evidence": "Source access, quality, IAM, semantic ownership, process, product ownership, controls capacity, skills, AI governance and change capacity."
+    },
+    {
+      "Area": "Operating economics",
+      "Test": "Production-outcome lead-time comparison",
+      "Required measurement/evidence": "Elapsed time to a controlled production workflow including data, controls, application/agent, testing and release."
+    },
+    {
+      "Area": "Operating economics",
+      "Test": "Custom code and configuration inventory",
+      "Required measurement/evidence": "Inventory application, pipeline, integration, policy, infrastructure, monitoring and test code/configuration and ownership."
+    },
+    {
+      "Area": "Operating economics",
+      "Test": "Maintenance and regression workload",
+      "Required measurement/evidence": "Annual effort for dependencies, upgrades, tests, incidents, policy changes and compatibility."
+    }
+  ],
+  "buyerReadiness": {
+    "criteria": [
+      {
+        "id": "Source-system accessibility",
+        "name": "Source-system accessibility",
+        "weight": 12,
+        "description": "Access, APIs, owners and legal authority for priority sources."
+      },
+      {
+        "id": "Data quality and master-data maturity",
+        "name": "Data quality and master-data maturity",
+        "weight": 12,
+        "description": "Quality, identifiers, reconciliation and master/reference data readiness."
+      },
+      {
+        "id": "Identity and access-management maturity",
+        "name": "Identity and access-management maturity",
+        "weight": 10,
+        "description": "Federation, provisioning, service identity, policy and privileged access maturity."
+      },
+      {
+        "id": "Ontology and semantic ownership",
+        "name": "Ontology and semantic ownership",
+        "weight": 10,
+        "description": "Named owners and governance for business objects, links, metrics and actions."
+      },
+      {
+        "id": "Process standardization",
+        "name": "Process standardization",
+        "weight": 10,
+        "description": "Clarity and consistency of target processes, decisions, controls and exceptions."
+      },
+      {
+        "id": "Business product ownership",
+        "name": "Business product ownership",
+        "weight": 12,
+        "description": "Accountable product owners, outcome owners and available subject-matter experts."
+      },
+      {
+        "id": "Security and compliance delivery capacity",
+        "name": "Security and compliance delivery capacity",
+        "weight": 10,
+        "description": "Capacity to review, approve, evidence and operate required controls."
+      },
+      {
+        "id": "Platform and engineering skills",
+        "name": "Platform and engineering skills",
+        "weight": 8,
+        "description": "Available data, application, cloud, graph, ML, SRE and integration skills."
+      },
+      {
+        "id": "AI governance readiness",
+        "name": "AI governance readiness",
+        "weight": 8,
+        "description": "Model, prompt, agent, evaluation, approval and incident governance."
+      },
+      {
+        "id": "Change-management capacity",
+        "name": "Change-management capacity",
+        "weight": 8,
+        "description": "Training, communications, role redesign, adoption measurement and executive sponsorship."
+      }
+    ],
+    "scores": {
+      "Source-system accessibility": 3,
+      "Data quality and master-data maturity": 3,
+      "Identity and access-management maturity": 3,
+      "Ontology and semantic ownership": 3,
+      "Process standardization": 3,
+      "Business product ownership": 3,
+      "Security and compliance delivery capacity": 3,
+      "Platform and engineering skills": 3,
+      "AI governance readiness": 3,
+      "Change-management capacity": 3
+    },
+    "notes": ""
+  },
+  "mustHaveDefaults": {
+    "met": 4,
+    "notMet": 1.5
+  },
+  "productOrder": [
+    "palantir-foundry",
+    "helix-foundry-helixdb",
+    "microsoft-fabric-fabric-iq-purview-power-platform",
+    "aws-portfolio",
+    "google-cloud-portfolio",
+    "databricks-genie-one-genie-ontology",
+    "snowflake",
+    "salesforce-data-cloud-agentforce",
+    "stardog",
+    "ontotext-graphdb",
+    "typedb",
+    "neo4j",
+    "relationalai-snowflake",
+    "azure-digital-twins-fabric-digital-twins",
+    "lance-lancedb",
+    "milvus",
+    "qdrant",
+    "weaviate",
+    "vespa",
+    "clickhouse",
+    "duckdb-motherduck",
+    "kuzu",
+    "puppygraph",
+    "spark",
+    "flink",
+    "ray",
+    "daft",
+    "datafusion-ballista",
+    "celonis-process-intelligence-agentc",
+    "amazon-quick",
+    "cognite-data-fusion-atlas-ai",
+    "dataiku",
+    "datadog-bits-ai",
+    "oracle-ai-database-26ai-ai-agent-studio",
+    "ibm-watsonx-orchestrate"
+  ]
+}

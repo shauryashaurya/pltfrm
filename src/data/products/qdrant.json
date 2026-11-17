@@ -1,0 +1,727 @@
+{
+  "id": "qdrant",
+  "name": "Qdrant",
+  "scope": "Specialized engine or database",
+  "confidence": "C",
+  "category": "Vector database",
+  "role": "Vector database",
+  "fit": "Filtered vector search and application retrieval",
+  "boundary": "Requires separate ontology, action, governance and application layers",
+  "notes": "",
+  "scopeCeilingOverrides": {
+    "domain": {
+      "Domain-specific data and relationship support": 3
+    }
+  },
+  "costModel": {
+    "enabled": false,
+    "licenseAnnual": 0,
+    "cloudAnnual": 0,
+    "supportAnnual": 0,
+    "implementationOneTime": 0,
+    "integrationOneTime": 0,
+    "trainingOneTime": 0,
+    "ongoingFTE": 0,
+    "changeFTE": 0,
+    "otherAnnual": 0,
+    "exitOneTime": 0,
+    "notes": "",
+    "annualBenefit": 0,
+    "benefitRampMonths": 0,
+    "benefitConfidence": 50,
+    "benefitNotes": "",
+    "legacySavingsAnnual": 0
+  },
+  "riskOverlay": {
+    "deliveryUncertainty": 3,
+    "concentrationRisk": 3,
+    "buyerReadinessDependency": 4,
+    "p50Months": 0,
+    "p90Months": 0,
+    "lowTcoFactor": 0.85,
+    "highTcoFactor": 1.35,
+    "notes": ""
+  },
+  "gateStatus": {
+    "6": "N/A",
+    "9": "Pass",
+    "12": "N/A"
+  },
+  "scores": {
+    "technical": {
+      "Architecture and workload fit": 3,
+      "Horizontal scale and distributed execution": 4,
+      "Concurrency and workload isolation": 3.5,
+      "Ingestion, updates and index maintenance": 4.5,
+      "Measured performance evidence": 4,
+      "High availability and failover": 3.5,
+      "Backup, PITR and disaster recovery": 3.5,
+      "Observability and operability": 3.5,
+      "Upgrade/schema lifecycle": 3,
+      "Identity federation and provisioning": 3,
+      "Fine-grained authorization": 3,
+      "Encryption and network isolation": 3.5,
+      "Auditability and evidence export": 2.5,
+      "Compliance assurance": 3,
+      "Governance, lineage and retention": 2,
+      "Residency and sovereignty": 4.5,
+      "Interoperability and portability": 3.5,
+      "Enterprise support and maturity": 3.5,
+      "Cost governance and predictability": 4
+    },
+    "business": {
+      "Data Modeling & Knowledge Representation": 1.5,
+      "Ontology Management & Governance": 1,
+      "Data Analysis & Code Development": 3,
+      "Data Visualization & Exploration": 2,
+      "Data Integration & Transformation": 1.5,
+      "AI, ML & MLOps": 3,
+      "Data Ingestion & Connectivity": 2.5,
+      "Security & Access Management": 3,
+      "No-Code Application Development": 1,
+      "Application Deployment & Hosting": 1.5,
+      "Serverless Computing": 2.5,
+      "Data Discovery & Management": 1.5,
+      "Automated Report Generation": 1,
+      "Data Validation & Quality Control": 1,
+      "Data Provenance & Traceability": 1
+    },
+    "ai": {
+      "Governed enterprise grounding": 2,
+      "Hybrid retrieval and context assembly": 4.5,
+      "Typed agent tools and actions": 1.5,
+      "Agent authorization and least privilege": 2.5,
+      "Human approval and operational controls": 1,
+      "Evaluation, tracing and audit": 2,
+      "Model/provider flexibility": 4.5,
+      "Memory and state management": 3,
+      "Real-time and event context": 2.5,
+      "Multi-agent/process orchestration": 1,
+      "Developer extensibility and standards": 4.5,
+      "Production scale and isolation": 4,
+      "Emergent value option set": 3
+    },
+    "economics": {
+      "Commercial acquisition and pricing transparency": 4,
+      "Initial implementation effort": 2,
+      "Service stitching and integration burden": 2,
+      "Time to first production outcome": 2,
+      "Custom code and configuration volume": 2,
+      "Security, governance and audit engineering effort": 2,
+      "Ongoing code maintenance and regression burden": 2,
+      "Ongoing platform engineering and operations": 3,
+      "Change and iteration economics": 3,
+      "Upgrade and cross-service regression burden": 3,
+      "Consumption and cost predictability": 4,
+      "Specialist skills and services dependency": 3,
+      "Exit and migration economics": 4
+    },
+    "domain": {
+      "Priority use-case fit": 3,
+      "Industry/domain data-model maturity": 2,
+      "Domain applications and reusable patterns": 2,
+      "Comparable production references": 3,
+      "Operational workflow and decision-cadence fit": 2,
+      "Domain-specific data and relationship support": 3,
+      "Domain regulatory and security fit": 4,
+      "Real-time and event requirement fit": 4,
+      "Analytics simulation and optimization fit": 3,
+      "Extension beyond initial use case": 3
+    },
+    "adoption": {
+      "Measurable business-outcome alignment": 3,
+      "End-user usability and workflow fit": 2,
+      "Time to user competency": 3,
+      "Product management and ownership model": 3,
+      "Process-change feasibility": 2,
+      "Human-in-the-loop accountability": 2,
+      "Adoption and outcome measurement": 2,
+      "Reuse across teams and use cases": 4,
+      "Business-user configurability": 2,
+      "Training and enablement requirement": 3,
+      "Accessibility and localization": 4,
+      "Legacy process and tool retirement": 2,
+      "Benefit durability and continuous improvement": 4
+    },
+    "career": {
+      "Labour-market demand": 2,
+      "Pay premium": 3,
+      "Skill longevity and vendor trajectory": 3,
+      "Skill transferability": 4,
+      "Learning resources and certification": 3,
+      "Community size and activity": 3,
+      "Open-source engagement": 5,
+      "Hands-on access": 5
+    }
+  },
+  "scoreStatus": {
+    "technical": {
+      "Architecture and workload fit": {
+        "status": "Baseline—workload validation required",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Horizontal scale and distributed execution": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Concurrency and workload isolation": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Ingestion, updates and index maintenance": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Measured performance evidence": {
+        "status": "Baseline—workload validation required",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "High availability and failover": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Backup, PITR and disaster recovery": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Observability and operability": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Upgrade/schema lifecycle": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Identity federation and provisioning": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Fine-grained authorization": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Encryption and network isolation": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Auditability and evidence export": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Compliance assurance": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Governance, lineage and retention": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Residency and sovereignty": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Interoperability and portability": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Enterprise support and maturity": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Cost governance and predictability": {
+        "status": "Baseline—workload validation required",
+        "rationale": "Replace with target architecture, matched workload benchmark and contractual/operating evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      }
+    },
+    "business": {
+      "Data Modeling & Knowledge Representation": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Ontology Management & Governance": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Data Analysis & Code Development": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Data Visualization & Exploration": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Data Integration & Transformation": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "AI, ML & MLOps": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Data Ingestion & Connectivity": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Security & Access Management": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "No-Code Application Development": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Application Deployment & Hosting": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Serverless Computing": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Data Discovery & Management": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Automated Report Generation": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Data Validation & Quality Control": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Data Provenance & Traceability": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      }
+    },
+    "ai": {
+      "Governed enterprise grounding": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Hybrid retrieval and context assembly": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Typed agent tools and actions": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Agent authorization and least privilege": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Human approval and operational controls": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Evaluation, tracing and audit": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Model/provider flexibility": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Memory and state management": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Real-time and event context": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Multi-agent/process orchestration": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Developer extensibility and standards": {
+        "status": "Baseline—validate",
+        "rationale": "Fast vector search with real-time updates and hybrid deployment options; governance and audit are minimal. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Production scale and isolation": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Emergent value option set": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      }
+    },
+    "economics": {
+      "Commercial acquisition and pricing transparency": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Initial implementation effort": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Service stitching and integration burden": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Time to first production outcome": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Custom code and configuration volume": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Security, governance and audit engineering effort": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Ongoing code maintenance and regression burden": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Ongoing platform engineering and operations": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Change and iteration economics": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Upgrade and cross-service regression burden": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Consumption and cost predictability": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Specialist skills and services dependency": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Exit and migration economics": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      }
+    },
+    "domain": {
+      "Priority use-case fit": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Industry/domain data-model maturity": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Domain applications and reusable patterns": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Comparable production references": {
+        "status": "Rescored for platform scope - User input still required",
+        "rationale": "Specialized engine or database ceiling of 3 for this platform-level criterion. Prior score: 4. Prior rationale: Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Scope ceilings (v3 merge 2026-11-16)",
+        "updated": "2026-11-16",
+        "priorScore": 4
+      },
+      "Operational workflow and decision-cadence fit": {
+        "status": "Rescored for platform scope - User input still required",
+        "rationale": "Specialized engine or database ceiling of 2 for this platform-level criterion. Prior score: 3. Prior rationale: Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Scope ceilings (v3 merge 2026-11-16)",
+        "updated": "2026-11-16",
+        "priorScore": 3
+      },
+      "Domain-specific data and relationship support": {
+        "status": "Rescored for platform scope - User input still required",
+        "rationale": "Specialized engine or database ceiling of 3 for this platform-level criterion. Prior score: 5. Prior rationale: Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Scope ceilings (v3 merge 2026-11-16)",
+        "updated": "2026-11-16",
+        "priorScore": 5
+      },
+      "Domain regulatory and security fit": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Real-time and event requirement fit": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Analytics simulation and optimization fit": {
+        "status": "Rescored for platform scope - User input still required",
+        "rationale": "Specialized engine or database ceiling of 3 for this platform-level criterion. Prior score: 4. Prior rationale: Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Scope ceilings (v3 merge 2026-11-16)",
+        "updated": "2026-11-16",
+        "priorScore": 4
+      },
+      "Extension beyond initial use case": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      }
+    },
+    "adoption": {
+      "Measurable business-outcome alignment": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "End-user usability and workflow fit": {
+        "status": "Rescored for platform scope - User input still required",
+        "rationale": "Specialized engine or database ceiling of 2 for this platform-level criterion. Prior score: 3. Prior rationale: Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Scope ceilings (v3 merge 2026-11-16)",
+        "updated": "2026-11-16",
+        "priorScore": 3
+      },
+      "Time to user competency": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Product management and ownership model": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Process-change feasibility": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Human-in-the-loop accountability": {
+        "status": "Rescored for platform scope - User input still required",
+        "rationale": "Specialized engine or database ceiling of 2 for this platform-level criterion. Prior score: 3. Prior rationale: Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Scope ceilings (v3 merge 2026-11-16)",
+        "updated": "2026-11-16",
+        "priorScore": 3
+      },
+      "Adoption and outcome measurement": {
+        "status": "Rescored for platform scope - User input still required",
+        "rationale": "Specialized engine or database ceiling of 2 for this platform-level criterion. Prior score: 3. Prior rationale: Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Scope ceilings (v3 merge 2026-11-16)",
+        "updated": "2026-11-16",
+        "priorScore": 3
+      },
+      "Reuse across teams and use cases": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Business-user configurability": {
+        "status": "Rescored for platform scope - User input still required",
+        "rationale": "Specialized engine or database ceiling of 2 for this platform-level criterion. Prior score: 3. Prior rationale: Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Scope ceilings (v3 merge 2026-11-16)",
+        "updated": "2026-11-16",
+        "priorScore": 3
+      },
+      "Training and enablement requirement": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Accessibility and localization": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Legacy process and tool retirement": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Benefit durability and continuous improvement": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      }
+    },
+    "career": {
+      "Labour-market demand": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Pay premium": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Skill longevity and vendor trajectory": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Skill transferability": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Learning resources and certification": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Community size and activity": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Open-source engagement": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Hands-on access": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      }
+    }
+  }
+}

@@ -1,0 +1,722 @@
+{
+  "id": "databricks-genie-one-genie-ontology",
+  "name": "Databricks + Genie One + Genie Ontology",
+  "scope": "Cloud data and AI platform",
+  "confidence": "B",
+  "category": "Lakehouse/data and AI platform",
+  "role": "Lakehouse data engineering, governance, ML and AI platform",
+  "fit": "Data/AI estates centered on lakehouse processing and model lifecycle",
+  "boundary": "Unity Catalog is not by itself a graph ontology or governed operational-action layer",
+  "notes": "",
+  "costModel": {
+    "enabled": false,
+    "licenseAnnual": 0,
+    "cloudAnnual": 0,
+    "supportAnnual": 0,
+    "implementationOneTime": 0,
+    "integrationOneTime": 0,
+    "trainingOneTime": 0,
+    "ongoingFTE": 0,
+    "changeFTE": 0,
+    "otherAnnual": 0,
+    "exitOneTime": 0,
+    "notes": "",
+    "annualBenefit": 0,
+    "benefitRampMonths": 0,
+    "benefitConfidence": 50,
+    "benefitNotes": "",
+    "legacySavingsAnnual": 0
+  },
+  "riskOverlay": {
+    "deliveryUncertainty": 3,
+    "concentrationRisk": 3,
+    "buyerReadinessDependency": 3,
+    "p50Months": 0,
+    "p90Months": 0,
+    "lowTcoFactor": 0.85,
+    "highTcoFactor": 1.35,
+    "notes": ""
+  },
+  "gateStatus": {
+    "0": "Pass",
+    "1": "Pass",
+    "2": "Pass",
+    "3": "Pass",
+    "4": "Pass",
+    "5": "Pass",
+    "6": "Pass",
+    "8": "Pass",
+    "9": "Pass",
+    "10": "Pass",
+    "11": "Pass"
+  },
+  "scores": {
+    "technical": {
+      "Architecture and workload fit": 3.5,
+      "Horizontal scale and distributed execution": 5,
+      "Concurrency and workload isolation": 4.5,
+      "Ingestion, updates and index maintenance": 5,
+      "Measured performance evidence": 4.5,
+      "High availability and failover": 4,
+      "Backup, PITR and disaster recovery": 3.5,
+      "Observability and operability": 4,
+      "Upgrade/schema lifecycle": 4.5,
+      "Identity federation and provisioning": 4.5,
+      "Fine-grained authorization": 4.5,
+      "Encryption and network isolation": 4.5,
+      "Auditability and evidence export": 4.5,
+      "Compliance assurance": 4.5,
+      "Governance, lineage and retention": 5,
+      "Residency and sovereignty": 4,
+      "Interoperability and portability": 5,
+      "Enterprise support and maturity": 4.5,
+      "Cost governance and predictability": 3
+    },
+    "business": {
+      "Data Modeling & Knowledge Representation": 3,
+      "Ontology Management & Governance": 4,
+      "Data Analysis & Code Development": 5,
+      "Data Visualization & Exploration": 4,
+      "Data Integration & Transformation": 5,
+      "AI, ML & MLOps": 5,
+      "Data Ingestion & Connectivity": 4,
+      "Security & Access Management": 4.5,
+      "No-Code Application Development": 3,
+      "Application Deployment & Hosting": 3.5,
+      "Serverless Computing": 4,
+      "Data Discovery & Management": 4.5,
+      "Automated Report Generation": 4.5,
+      "Data Validation & Quality Control": 4.5,
+      "Data Provenance & Traceability": 4.5
+    },
+    "ai": {
+      "Governed enterprise grounding": 5,
+      "Hybrid retrieval and context assembly": 4.5,
+      "Typed agent tools and actions": 4,
+      "Agent authorization and least privilege": 4,
+      "Human approval and operational controls": 3,
+      "Evaluation, tracing and audit": 5,
+      "Model/provider flexibility": 5,
+      "Memory and state management": 3.5,
+      "Real-time and event context": 4,
+      "Multi-agent/process orchestration": 3.5,
+      "Developer extensibility and standards": 4.5,
+      "Production scale and isolation": 4.5,
+      "Emergent value option set": 4
+    },
+    "economics": {
+      "Commercial acquisition and pricing transparency": 3,
+      "Initial implementation effort": 4,
+      "Service stitching and integration burden": 3.5,
+      "Time to first production outcome": 4,
+      "Custom code and configuration volume": 3.5,
+      "Security, governance and audit engineering effort": 4,
+      "Ongoing code maintenance and regression burden": 3.5,
+      "Ongoing platform engineering and operations": 4,
+      "Change and iteration economics": 4,
+      "Upgrade and cross-service regression burden": 3,
+      "Consumption and cost predictability": 3,
+      "Specialist skills and services dependency": 4,
+      "Exit and migration economics": 3
+    },
+    "domain": {
+      "Priority use-case fit": 4,
+      "Industry/domain data-model maturity": 3,
+      "Domain applications and reusable patterns": 4,
+      "Comparable production references": 5,
+      "Operational workflow and decision-cadence fit": 4,
+      "Domain-specific data and relationship support": 5,
+      "Domain regulatory and security fit": 5,
+      "Real-time and event requirement fit": 5,
+      "Analytics simulation and optimization fit": 5,
+      "Extension beyond initial use case": 5
+    },
+    "adoption": {
+      "Measurable business-outcome alignment": 4,
+      "End-user usability and workflow fit": 5,
+      "Time to user competency": 4.5,
+      "Product management and ownership model": 4,
+      "Process-change feasibility": 3,
+      "Human-in-the-loop accountability": 4,
+      "Adoption and outcome measurement": 5,
+      "Reuse across teams and use cases": 5,
+      "Business-user configurability": 4.5,
+      "Training and enablement requirement": 4,
+      "Accessibility and localization": 4,
+      "Legacy process and tool retirement": 4,
+      "Benefit durability and continuous improvement": 5
+    },
+    "career": {
+      "Labour-market demand": 5,
+      "Pay premium": 5,
+      "Skill longevity and vendor trajectory": 5,
+      "Skill transferability": 4,
+      "Learning resources and certification": 5,
+      "Community size and activity": 5,
+      "Open-source engagement": 5,
+      "Hands-on access": 4
+    }
+  },
+  "scoreStatus": {
+    "technical": {
+      "Architecture and workload fit": {
+        "status": "Baseline—workload validation required",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Horizontal scale and distributed execution": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Concurrency and workload isolation": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Ingestion, updates and index maintenance": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Measured performance evidence": {
+        "status": "Baseline—workload validation required",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "High availability and failover": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Backup, PITR and disaster recovery": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Observability and operability": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Upgrade/schema lifecycle": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Identity federation and provisioning": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Fine-grained authorization": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Encryption and network isolation": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Auditability and evidence export": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Compliance assurance": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Governance, lineage and retention": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Residency and sovereignty": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Interoperability and portability": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Enterprise support and maturity": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Cost governance and predictability": {
+        "status": "Baseline—workload validation required",
+        "rationale": "Replace with target architecture, matched workload benchmark and contractual/operating evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      }
+    },
+    "business": {
+      "Data Modeling & Knowledge Representation": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Ontology Management & Governance": {
+        "status": "Updated for 2026 release - validate",
+        "rationale": "Genie One, Genie Agents and Genie Ontology (announced June 2026; Genie Ontology reported GA in November 2026) add a business context layer and business-user agents. Previous score: 2.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Data Analysis & Code Development": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Data Visualization & Exploration": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Data Integration & Transformation": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "AI, ML & MLOps": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Data Ingestion & Connectivity": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Security & Access Management": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "No-Code Application Development": {
+        "status": "Updated for 2026 release - validate",
+        "rationale": "Genie One, Genie Agents and Genie Ontology (announced June 2026; Genie Ontology reported GA in November 2026) add a business context layer and business-user agents. Previous score: 2.5.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Application Deployment & Hosting": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Serverless Computing": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Data Discovery & Management": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Automated Report Generation": {
+        "status": "Updated for 2026 release - validate",
+        "rationale": "Genie One, Genie Agents and Genie Ontology (announced June 2026; Genie Ontology reported GA in November 2026) add a business context layer and business-user agents. Previous score: 3.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Data Validation & Quality Control": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Data Provenance & Traceability": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      }
+    },
+    "ai": {
+      "Governed enterprise grounding": {
+        "status": "Updated for 2026 release - validate",
+        "rationale": "Genie One, Genie Agents and Genie Ontology (announced June 2026; Genie Ontology reported GA in November 2026) add a business context layer and business-user agents. Previous score: 4.5.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Hybrid retrieval and context assembly": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Typed agent tools and actions": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Agent authorization and least privilege": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Human approval and operational controls": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Evaluation, tracing and audit": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Model/provider flexibility": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Memory and state management": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Real-time and event context": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Multi-agent/process orchestration": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Developer extensibility and standards": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Production scale and isolation": {
+        "status": "Baseline—validate",
+        "rationale": "Lakehouse with Unity Catalog lineage and ABAC, open formats and MLflow tracing; DR and operational application layers are largely customer-built. Replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": "2026-10-22"
+      },
+      "Emergent value option set": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      }
+    },
+    "economics": {
+      "Commercial acquisition and pricing transparency": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Initial implementation effort": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Service stitching and integration burden": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Time to first production outcome": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Custom code and configuration volume": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Security, governance and audit engineering effort": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Ongoing code maintenance and regression burden": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Ongoing platform engineering and operations": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Change and iteration economics": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Upgrade and cross-service regression burden": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Consumption and cost predictability": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Specialist skills and services dependency": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Exit and migration economics": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      }
+    },
+    "domain": {
+      "Priority use-case fit": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Industry/domain data-model maturity": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Domain applications and reusable patterns": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Comparable production references": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Operational workflow and decision-cadence fit": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Domain-specific data and relationship support": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Domain regulatory and security fit": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Real-time and event requirement fit": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Analytics simulation and optimization fit": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Extension beyond initial use case": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      }
+    },
+    "adoption": {
+      "Measurable business-outcome alignment": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "End-user usability and workflow fit": {
+        "status": "User organization input required",
+        "rationale": "Genie One, Genie Agents and Genie Ontology (announced June 2026; Genie Ontology reported GA in November 2026) add a business context layer and business-user agents. Previous score: 4.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Time to user competency": {
+        "status": "User organization input required",
+        "rationale": "Genie One, Genie Agents and Genie Ontology (announced June 2026; Genie Ontology reported GA in November 2026) add a business context layer and business-user agents. Previous score: 4.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Product management and ownership model": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Process-change feasibility": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Human-in-the-loop accountability": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Adoption and outcome measurement": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Reuse across teams and use cases": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Business-user configurability": {
+        "status": "User organization input required",
+        "rationale": "Genie One, Genie Agents and Genie Ontology (announced June 2026; Genie Ontology reported GA in November 2026) add a business context layer and business-user agents. Previous score: 4.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Training and enablement requirement": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Accessibility and localization": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Legacy process and tool retirement": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Benefit durability and continuous improvement": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      }
+    },
+    "career": {
+      "Labour-market demand": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Pay premium": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Skill longevity and vendor trajectory": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Skill transferability": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Learning resources and certification": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Community size and activity": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Open-source engagement": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Hands-on access": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      }
+    }
+  }
+}

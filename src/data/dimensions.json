@@ -1,0 +1,9 @@
+[
+  { "key": "technical", "letter": "t", "label": "Technical & enterprise", "column": "Technical", "abbr": "Tech", "csv": "Technical" },
+  { "key": "business", "letter": "b", "label": "Business/platform", "column": "Business", "abbr": "Bus.", "csv": "Business" },
+  { "key": "ai", "letter": "a", "label": "AI & agentic", "column": "AI", "abbr": "AI", "csv": "AI" },
+  { "key": "economics", "letter": "o", "label": "Delivery & operating economics", "column": "Economics", "abbr": "Econ.", "csv": "Economics" },
+  { "key": "domain", "letter": "d", "label": "Domain & use-case fit", "column": "Domain fit", "abbr": "Domain", "csv": "DomainFit" },
+  { "key": "adoption", "letter": "v", "label": "Adoption & value realization", "column": "Adoption/value", "abbr": "Adopt.", "csv": "AdoptionValue" },
+  { "key": "career", "letter": "u", "label": "Career upside", "column": "Career upside", "abbr": "Career", "csv": "CareerUpside" }
+]

@@ -1,0 +1,139 @@
+[
+  {
+    "name": "Integrated operational platform",
+    "code": "P",
+    "description": "One offering that spans data integration, ontology, applications, workflow and agents for cross-enterprise operations.",
+    "ceilings": {}
+  },
+  {
+    "name": "Cloud data and AI platform",
+    "code": "C",
+    "description": "A cloud data, analytics and AI platform (often a portfolio of services) that can be assembled into an operational platform.",
+    "ceilings": {}
+  },
+  {
+    "name": "Domain application platform",
+    "code": "D",
+    "description": "Strong inside a home business or technical domain (CRM, process, industrial, observability); economics are capped beyond that domain.",
+    "ceilings": {
+      "economics": {
+        "Initial implementation effort": 3,
+        "Service stitching and integration burden": 3,
+        "Time to first production outcome": 3,
+        "Custom code and configuration volume": 3,
+        "Security, governance and audit engineering effort": 3,
+        "Ongoing code maintenance and regression burden": 3,
+        "Ongoing platform engineering and operations": 3,
+        "Change and iteration economics": 3,
+        "Upgrade and cross-service regression burden": 3
+      }
+    }
+  },
+  {
+    "name": "AI and agent platform",
+    "code": "A",
+    "description": "Builds, runs or orchestrates AI models and agents over data and applications held in other platforms.",
+    "ceilings": {}
+  },
+  {
+    "name": "Specialized engine or database",
+    "code": "E",
+    "description": "A database, graph, vector or analytics engine; capped on platform-level criteria that need applications, workflow and governance around it.",
+    "ceilings": {
+      "business": {
+        "Data Integration & Transformation": 3,
+        "Data Validation & Quality Control": 2,
+        "Security & Access Management": 4,
+        "Ontology Management & Governance": 3,
+        "Data Visualization & Exploration": 3
+      },
+      "technical": {
+        "Governance, lineage and retention": 3
+      },
+      "ai": {
+        "Typed agent tools and actions": 3,
+        "Agent authorization and least privilege": 3,
+        "Human approval and operational controls": 2,
+        "Multi-agent/process orchestration": 2
+      },
+      "domain": {
+        "Priority use-case fit": 3,
+        "Domain applications and reusable patterns": 2,
+        "Operational workflow and decision-cadence fit": 2,
+        "Comparable production references": 3,
+        "Extension beyond initial use case": 3,
+        "Analytics simulation and optimization fit": 3,
+        "Real-time and event requirement fit": 4
+      },
+      "adoption": {
+        "End-user usability and workflow fit": 2,
+        "Business-user configurability": 2,
+        "Legacy process and tool retirement": 2,
+        "Adoption and outcome measurement": 2,
+        "Human-in-the-loop accountability": 2,
+        "Product management and ownership model": 3,
+        "Measurable business-outcome alignment": 3
+      },
+      "economics": {
+        "Initial implementation effort": 2,
+        "Service stitching and integration burden": 2,
+        "Time to first production outcome": 2,
+        "Custom code and configuration volume": 2,
+        "Security, governance and audit engineering effort": 2,
+        "Ongoing code maintenance and regression burden": 2,
+        "Ongoing platform engineering and operations": 3,
+        "Change and iteration economics": 3,
+        "Upgrade and cross-service regression burden": 3
+      }
+    }
+  },
+  {
+    "name": "Compute framework",
+    "code": "F",
+    "description": "A distributed processing framework; capped on platform-level criteria for the same reason as engines.",
+    "ceilings": {
+      "business": {
+        "Data Validation & Quality Control": 2,
+        "Security & Access Management": 3
+      },
+      "technical": {
+        "Governance, lineage and retention": 3
+      },
+      "ai": {
+        "Typed agent tools and actions": 2,
+        "Agent authorization and least privilege": 2,
+        "Human approval and operational controls": 1,
+        "Multi-agent/process orchestration": 3
+      },
+      "domain": {
+        "Priority use-case fit": 2,
+        "Domain applications and reusable patterns": 1,
+        "Operational workflow and decision-cadence fit": 2,
+        "Comparable production references": 3,
+        "Extension beyond initial use case": 3,
+        "Analytics simulation and optimization fit": 3,
+        "Domain-specific data and relationship support": 3
+      },
+      "adoption": {
+        "End-user usability and workflow fit": 1,
+        "Business-user configurability": 1,
+        "Legacy process and tool retirement": 1,
+        "Adoption and outcome measurement": 2,
+        "Human-in-the-loop accountability": 2,
+        "Product management and ownership model": 2,
+        "Measurable business-outcome alignment": 2
+      },
+      "economics": {
+        "Initial implementation effort": 2,
+        "Service stitching and integration burden": 2,
+        "Time to first production outcome": 2,
+        "Custom code and configuration volume": 2,
+        "Security, governance and audit engineering effort": 2,
+        "Ongoing code maintenance and regression burden": 2,
+        "Ongoing platform engineering and operations": 3,
+        "Change and iteration economics": 3,
+        "Upgrade and cross-service regression burden": 3
+      }
+    }
+  }
+]

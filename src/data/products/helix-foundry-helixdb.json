@@ -1,0 +1,722 @@
+{
+  "id": "helix-foundry-helixdb",
+  "name": "Helix Foundry + HelixDB",
+  "scope": "Specialized engine or database",
+  "confidence": "D",
+  "category": "Emerging graph/vector ontology runtime",
+  "role": "Emerging ontology layer over graph/vector database",
+  "fit": "Graph/vector-centric application retrieval and ontology-backed AI development",
+  "boundary": "Public evidence is insufficient for distributed scale, HA/DR, fine-grained controls, compliance scope and enterprise operating model",
+  "notes": "",
+  "costModel": {
+    "enabled": false,
+    "licenseAnnual": 0,
+    "cloudAnnual": 0,
+    "supportAnnual": 0,
+    "implementationOneTime": 0,
+    "integrationOneTime": 0,
+    "trainingOneTime": 0,
+    "ongoingFTE": 0,
+    "changeFTE": 0,
+    "otherAnnual": 0,
+    "exitOneTime": 0,
+    "notes": "",
+    "annualBenefit": 0,
+    "benefitRampMonths": 0,
+    "benefitConfidence": 50,
+    "benefitNotes": "",
+    "legacySavingsAnnual": 0
+  },
+  "riskOverlay": {
+    "deliveryUncertainty": 5,
+    "concentrationRisk": 2,
+    "buyerReadinessDependency": 5,
+    "p50Months": 0,
+    "p90Months": 0,
+    "lowTcoFactor": 0.85,
+    "highTcoFactor": 1.35,
+    "notes": ""
+  },
+  "gateStatus": {
+    "4": "Fail",
+    "5": "Fail",
+    "6": "N/A",
+    "10": "Fail",
+    "11": "Pass",
+    "12": "N/A"
+  },
+  "scores": {
+    "technical": {
+      "Architecture and workload fit": 3,
+      "Horizontal scale and distributed execution": 2,
+      "Concurrency and workload isolation": 2,
+      "Ingestion, updates and index maintenance": 3,
+      "Measured performance evidence": 2,
+      "High availability and failover": 2,
+      "Backup, PITR and disaster recovery": 2,
+      "Observability and operability": 2,
+      "Upgrade/schema lifecycle": 2,
+      "Identity federation and provisioning": 2,
+      "Fine-grained authorization": 2,
+      "Encryption and network isolation": 3,
+      "Auditability and evidence export": 1,
+      "Compliance assurance": 1,
+      "Governance, lineage and retention": 1,
+      "Residency and sovereignty": 3,
+      "Interoperability and portability": 4,
+      "Enterprise support and maturity": 1,
+      "Cost governance and predictability": 3
+    },
+    "business": {
+      "Data Modeling & Knowledge Representation": 2,
+      "Ontology Management & Governance": 2,
+      "Data Analysis & Code Development": 3,
+      "Data Visualization & Exploration": 2,
+      "Data Integration & Transformation": 2,
+      "AI, ML & MLOps": 2,
+      "Data Ingestion & Connectivity": 2,
+      "Security & Access Management": 2,
+      "No-Code Application Development": 3,
+      "Application Deployment & Hosting": 1,
+      "Serverless Computing": 2,
+      "Data Discovery & Management": 2,
+      "Automated Report Generation": 2,
+      "Data Validation & Quality Control": 2,
+      "Data Provenance & Traceability": 2
+    },
+    "ai": {
+      "Governed enterprise grounding": 2,
+      "Hybrid retrieval and context assembly": 4,
+      "Typed agent tools and actions": 2,
+      "Agent authorization and least privilege": 2,
+      "Human approval and operational controls": 1,
+      "Evaluation, tracing and audit": 2,
+      "Model/provider flexibility": 4,
+      "Memory and state management": 3,
+      "Real-time and event context": 2,
+      "Multi-agent/process orchestration": 2,
+      "Developer extensibility and standards": 4,
+      "Production scale and isolation": 2,
+      "Emergent value option set": 4
+    },
+    "economics": {
+      "Commercial acquisition and pricing transparency": 4,
+      "Initial implementation effort": 2,
+      "Service stitching and integration burden": 2,
+      "Time to first production outcome": 2,
+      "Custom code and configuration volume": 2,
+      "Security, governance and audit engineering effort": 2,
+      "Ongoing code maintenance and regression burden": 2,
+      "Ongoing platform engineering and operations": 2,
+      "Change and iteration economics": 3,
+      "Upgrade and cross-service regression burden": 2,
+      "Consumption and cost predictability": 4,
+      "Specialist skills and services dependency": 2,
+      "Exit and migration economics": 4
+    },
+    "domain": {
+      "Priority use-case fit": 3,
+      "Industry/domain data-model maturity": 3,
+      "Domain applications and reusable patterns": 2,
+      "Comparable production references": 1,
+      "Operational workflow and decision-cadence fit": 2,
+      "Domain-specific data and relationship support": 4,
+      "Domain regulatory and security fit": 2,
+      "Real-time and event requirement fit": 3,
+      "Analytics simulation and optimization fit": 3,
+      "Extension beyond initial use case": 3
+    },
+    "adoption": {
+      "Measurable business-outcome alignment": 3,
+      "End-user usability and workflow fit": 2,
+      "Time to user competency": 3,
+      "Product management and ownership model": 2,
+      "Process-change feasibility": 2,
+      "Human-in-the-loop accountability": 2,
+      "Adoption and outcome measurement": 2,
+      "Reuse across teams and use cases": 4,
+      "Business-user configurability": 2,
+      "Training and enablement requirement": 3,
+      "Accessibility and localization": 3,
+      "Legacy process and tool retirement": 2,
+      "Benefit durability and continuous improvement": 4
+    },
+    "career": {
+      "Labour-market demand": 0,
+      "Pay premium": 1,
+      "Skill longevity and vendor trajectory": 1,
+      "Skill transferability": 2,
+      "Learning resources and certification": 1,
+      "Community size and activity": 1,
+      "Open-source engagement": 3,
+      "Hands-on access": 4
+    }
+  },
+  "scoreStatus": {
+    "technical": {
+      "Architecture and workload fit": {
+        "status": "Baseline—workload validation required",
+        "rationale": "Replace with target architecture, matched workload benchmark and contractual/operating evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Horizontal scale and distributed execution": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Concurrency and workload isolation": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Ingestion, updates and index maintenance": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Measured performance evidence": {
+        "status": "Baseline—workload validation required",
+        "rationale": "Replace with target architecture, matched workload benchmark and contractual/operating evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "High availability and failover": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Backup, PITR and disaster recovery": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Observability and operability": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Upgrade/schema lifecycle": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Identity federation and provisioning": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Fine-grained authorization": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Encryption and network isolation": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Auditability and evidence export": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Compliance assurance": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Governance, lineage and retention": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Residency and sovereignty": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Interoperability and portability": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Enterprise support and maturity": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Cost governance and predictability": {
+        "status": "Baseline—workload validation required",
+        "rationale": "Replace with target architecture, matched workload benchmark and contractual/operating evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      }
+    },
+    "business": {
+      "Data Modeling & Knowledge Representation": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Ontology Management & Governance": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Data Analysis & Code Development": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Data Visualization & Exploration": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Data Integration & Transformation": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "AI, ML & MLOps": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Data Ingestion & Connectivity": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Security & Access Management": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "No-Code Application Development": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Application Deployment & Hosting": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Serverless Computing": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Data Discovery & Management": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Automated Report Generation": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Data Validation & Quality Control": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Data Provenance & Traceability": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      }
+    },
+    "ai": {
+      "Governed enterprise grounding": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Hybrid retrieval and context assembly": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Typed agent tools and actions": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Agent authorization and least privilege": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Human approval and operational controls": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Evaluation, tracing and audit": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Model/provider flexibility": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Memory and state management": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Real-time and event context": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Multi-agent/process orchestration": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Developer extensibility and standards": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Production scale and isolation": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Emergent value option set": {
+        "status": "Baseline—validate",
+        "rationale": "Directional baseline based on assessed product scope; replace with dated vendor/customer evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      }
+    },
+    "economics": {
+      "Commercial acquisition and pricing transparency": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Initial implementation effort": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Service stitching and integration burden": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Time to first production outcome": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Custom code and configuration volume": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Security, governance and audit engineering effort": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Ongoing code maintenance and regression burden": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Ongoing platform engineering and operations": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Change and iteration economics": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Upgrade and cross-service regression burden": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Consumption and cost predictability": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Specialist skills and services dependency": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Exit and migration economics": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "Economics baseline; validate delivery, code/configuration, maintenance, staffing and commercial evidence.",
+        "source": "Packaged baseline",
+        "updated": ""
+      }
+    },
+    "domain": {
+      "Priority use-case fit": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Industry/domain data-model maturity": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Domain applications and reusable patterns": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Comparable production references": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Operational workflow and decision-cadence fit": {
+        "status": "Rescored for platform scope - User input still required",
+        "rationale": "Specialized engine or database ceiling of 2 for this platform-level criterion. Prior score: 3. Prior rationale: Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Scope ceilings (v3 merge 2026-11-16)",
+        "updated": "2026-11-16",
+        "priorScore": 3
+      },
+      "Domain-specific data and relationship support": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Domain regulatory and security fit": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Real-time and event requirement fit": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Analytics simulation and optimization fit": {
+        "status": "User scenario input required",
+        "rationale": "Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Extension beyond initial use case": {
+        "status": "Rescored for platform scope - User input still required",
+        "rationale": "Specialized engine or database ceiling of 3 for this platform-level criterion. Prior score: 4. Prior rationale: Domain and use-case fit is scenario-specific. Replace the packaged cross-enterprise baseline for the named industry, workflow and use case.",
+        "source": "Scope ceilings (v3 merge 2026-11-16)",
+        "updated": "2026-11-16",
+        "priorScore": 4
+      }
+    },
+    "adoption": {
+      "Measurable business-outcome alignment": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "End-user usability and workflow fit": {
+        "status": "Rescored for platform scope - User input still required",
+        "rationale": "Specialized engine or database ceiling of 2 for this platform-level criterion. Prior score: 3. Prior rationale: Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Scope ceilings (v3 merge 2026-11-16)",
+        "updated": "2026-11-16",
+        "priorScore": 3
+      },
+      "Time to user competency": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Product management and ownership model": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Process-change feasibility": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Human-in-the-loop accountability": {
+        "status": "Rescored for platform scope - User input still required",
+        "rationale": "Specialized engine or database ceiling of 2 for this platform-level criterion. Prior score: 3. Prior rationale: Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Scope ceilings (v3 merge 2026-11-16)",
+        "updated": "2026-11-16",
+        "priorScore": 3
+      },
+      "Adoption and outcome measurement": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Reuse across teams and use cases": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Business-user configurability": {
+        "status": "Rescored for platform scope - User input still required",
+        "rationale": "Specialized engine or database ceiling of 2 for this platform-level criterion. Prior score: 3. Prior rationale: Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Scope ceilings (v3 merge 2026-11-16)",
+        "updated": "2026-11-16",
+        "priorScore": 3
+      },
+      "Training and enablement requirement": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Accessibility and localization": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Legacy process and tool retirement": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      },
+      "Benefit durability and continuous improvement": {
+        "status": "User organization input required",
+        "rationale": "Adoption and value realization depend on the buyer’s users, process, ownership, change capacity and outcome model.",
+        "source": "Packaged baseline",
+        "updated": ""
+      }
+    },
+    "career": {
+      "Labour-market demand": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Pay premium": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Skill longevity and vendor trajectory": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Skill transferability": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Learning resources and certification": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Community size and activity": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Open-source engagement": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Hands-on access": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      }
+    }
+  }
+}

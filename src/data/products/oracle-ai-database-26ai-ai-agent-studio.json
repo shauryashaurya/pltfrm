@@ -1,0 +1,723 @@
+{
+  "id": "oracle-ai-database-26ai-ai-agent-studio",
+  "name": "Oracle AI Database 26ai + AI Agent Studio",
+  "scope": "AI and agent platform",
+  "confidence": "C",
+  "category": "Converged database with in-database agents and application agent studio",
+  "role": "AI Database 26ai (Select AI Agent, Private Agent Factory) with AI Agent Studio for Fusion and industry applications on OCI",
+  "fit": "Oracle-centred estates: Fusion applications, Oracle Database workloads and sovereign deployments",
+  "boundary": "Strongest inside Oracle applications and databases; several agent offerings announced for later availability",
+  "notes": "",
+  "costModel": {
+    "enabled": false,
+    "licenseAnnual": 0,
+    "cloudAnnual": 0,
+    "supportAnnual": 0,
+    "implementationOneTime": 0,
+    "integrationOneTime": 0,
+    "trainingOneTime": 0,
+    "ongoingFTE": 0,
+    "changeFTE": 0,
+    "otherAnnual": 0,
+    "exitOneTime": 0,
+    "notes": "",
+    "annualBenefit": 0,
+    "benefitRampMonths": 0,
+    "benefitConfidence": 50,
+    "benefitNotes": "",
+    "legacySavingsAnnual": 0
+  },
+  "riskOverlay": {
+    "deliveryUncertainty": 3,
+    "concentrationRisk": 4,
+    "buyerReadinessDependency": 3,
+    "p50Months": 0,
+    "p90Months": 0,
+    "lowTcoFactor": 0.85,
+    "highTcoFactor": 1.35,
+    "notes": ""
+  },
+  "gateStatus": {
+    "0": "Pass",
+    "1": "Pass",
+    "2": "Pass",
+    "3": "Pass",
+    "4": "Pass",
+    "5": "Pass",
+    "6": "Pass",
+    "7": "Pass",
+    "8": "Pass",
+    "9": "Pass",
+    "10": "Pass",
+    "12": "Pass"
+  },
+  "scores": {
+    "technical": {
+      "Architecture and workload fit": 4,
+      "Horizontal scale and distributed execution": 5,
+      "Concurrency and workload isolation": 5,
+      "Ingestion, updates and index maintenance": 5,
+      "Measured performance evidence": 4,
+      "High availability and failover": 5,
+      "Backup, PITR and disaster recovery": 5,
+      "Observability and operability": 5,
+      "Upgrade/schema lifecycle": 4,
+      "Identity federation and provisioning": 5,
+      "Fine-grained authorization": 5,
+      "Encryption and network isolation": 5,
+      "Auditability and evidence export": 5,
+      "Compliance assurance": 5,
+      "Governance, lineage and retention": 4,
+      "Residency and sovereignty": 5,
+      "Interoperability and portability": 3,
+      "Enterprise support and maturity": 5,
+      "Cost governance and predictability": 3
+    },
+    "business": {
+      "Data Modeling & Knowledge Representation": 4,
+      "Ontology Management & Governance": 3,
+      "Data Analysis & Code Development": 4,
+      "Data Visualization & Exploration": 4,
+      "Data Integration & Transformation": 4,
+      "AI, ML & MLOps": 4,
+      "Data Ingestion & Connectivity": 4,
+      "Security & Access Management": 5,
+      "No-Code Application Development": 4,
+      "Application Deployment & Hosting": 5,
+      "Serverless Computing": 4,
+      "Data Discovery & Management": 4,
+      "Automated Report Generation": 4,
+      "Data Validation & Quality Control": 4,
+      "Data Provenance & Traceability": 3
+    },
+    "ai": {
+      "Governed enterprise grounding": 5,
+      "Hybrid retrieval and context assembly": 5,
+      "Typed agent tools and actions": 4,
+      "Agent authorization and least privilege": 4,
+      "Human approval and operational controls": 4,
+      "Evaluation, tracing and audit": 4,
+      "Model/provider flexibility": 4,
+      "Memory and state management": 4,
+      "Real-time and event context": 4,
+      "Multi-agent/process orchestration": 4,
+      "Developer extensibility and standards": 4,
+      "Production scale and isolation": 5,
+      "Emergent value option set": 4
+    },
+    "economics": {
+      "Commercial acquisition and pricing transparency": 3,
+      "Initial implementation effort": 3,
+      "Service stitching and integration burden": 3,
+      "Time to first production outcome": 3,
+      "Custom code and configuration volume": 3,
+      "Security, governance and audit engineering effort": 4,
+      "Ongoing code maintenance and regression burden": 3,
+      "Ongoing platform engineering and operations": 3,
+      "Change and iteration economics": 3,
+      "Upgrade and cross-service regression burden": 3,
+      "Consumption and cost predictability": 3,
+      "Specialist skills and services dependency": 3,
+      "Exit and migration economics": 2
+    },
+    "domain": {
+      "Priority use-case fit": 4,
+      "Industry/domain data-model maturity": 4,
+      "Domain applications and reusable patterns": 4,
+      "Comparable production references": 4,
+      "Operational workflow and decision-cadence fit": 4,
+      "Domain-specific data and relationship support": 4,
+      "Domain regulatory and security fit": 5,
+      "Real-time and event requirement fit": 4,
+      "Analytics simulation and optimization fit": 4,
+      "Extension beyond initial use case": 4
+    },
+    "adoption": {
+      "Measurable business-outcome alignment": 4,
+      "End-user usability and workflow fit": 3,
+      "Time to user competency": 3,
+      "Product management and ownership model": 4,
+      "Process-change feasibility": 3,
+      "Human-in-the-loop accountability": 4,
+      "Adoption and outcome measurement": 4,
+      "Reuse across teams and use cases": 4,
+      "Business-user configurability": 4,
+      "Training and enablement requirement": 3,
+      "Accessibility and localization": 5,
+      "Legacy process and tool retirement": 4,
+      "Benefit durability and continuous improvement": 4
+    },
+    "career": {
+      "Labour-market demand": 4,
+      "Pay premium": 4,
+      "Skill longevity and vendor trajectory": 4,
+      "Skill transferability": 3,
+      "Learning resources and certification": 4,
+      "Community size and activity": 4,
+      "Open-source engagement": 2,
+      "Hands-on access": 4
+    }
+  },
+  "scoreStatus": {
+    "technical": {
+      "Architecture and workload fit": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Horizontal scale and distributed execution": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Concurrency and workload isolation": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Ingestion, updates and index maintenance": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Measured performance evidence": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "High availability and failover": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Backup, PITR and disaster recovery": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Observability and operability": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Upgrade/schema lifecycle": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Identity federation and provisioning": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Fine-grained authorization": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Encryption and network isolation": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Auditability and evidence export": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Compliance assurance": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Governance, lineage and retention": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Residency and sovereignty": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Interoperability and portability": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Enterprise support and maturity": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Cost governance and predictability": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      }
+    },
+    "business": {
+      "Data Modeling & Knowledge Representation": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Ontology Management & Governance": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Data Analysis & Code Development": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Data Visualization & Exploration": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Data Integration & Transformation": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "AI, ML & MLOps": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Data Ingestion & Connectivity": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Security & Access Management": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "No-Code Application Development": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Application Deployment & Hosting": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Serverless Computing": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Data Discovery & Management": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Automated Report Generation": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Data Validation & Quality Control": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Data Provenance & Traceability": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      }
+    },
+    "ai": {
+      "Governed enterprise grounding": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Hybrid retrieval and context assembly": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Typed agent tools and actions": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Agent authorization and least privilege": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Human approval and operational controls": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Evaluation, tracing and audit": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Model/provider flexibility": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Memory and state management": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Real-time and event context": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Multi-agent/process orchestration": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Developer extensibility and standards": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Production scale and isolation": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Emergent value option set": {
+        "status": "Baseline—validate",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      }
+    },
+    "economics": {
+      "Commercial acquisition and pricing transparency": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Initial implementation effort": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Service stitching and integration burden": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Time to first production outcome": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Custom code and configuration volume": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Security, governance and audit engineering effort": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Ongoing code maintenance and regression burden": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Ongoing platform engineering and operations": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Change and iteration economics": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Upgrade and cross-service regression burden": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Consumption and cost predictability": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Specialist skills and services dependency": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Exit and migration economics": {
+        "status": "Baseline—buyer cost validation required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      }
+    },
+    "domain": {
+      "Priority use-case fit": {
+        "status": "User scenario input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Industry/domain data-model maturity": {
+        "status": "User scenario input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Domain applications and reusable patterns": {
+        "status": "User scenario input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Comparable production references": {
+        "status": "User scenario input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Operational workflow and decision-cadence fit": {
+        "status": "User scenario input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Domain-specific data and relationship support": {
+        "status": "User scenario input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Domain regulatory and security fit": {
+        "status": "User scenario input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Real-time and event requirement fit": {
+        "status": "User scenario input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Analytics simulation and optimization fit": {
+        "status": "User scenario input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Extension beyond initial use case": {
+        "status": "User scenario input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      }
+    },
+    "adoption": {
+      "Measurable business-outcome alignment": {
+        "status": "User organization input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "End-user usability and workflow fit": {
+        "status": "User organization input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Time to user competency": {
+        "status": "User organization input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Product management and ownership model": {
+        "status": "User organization input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Process-change feasibility": {
+        "status": "User organization input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Human-in-the-loop accountability": {
+        "status": "User organization input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Adoption and outcome measurement": {
+        "status": "User organization input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Reuse across teams and use cases": {
+        "status": "User organization input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Business-user configurability": {
+        "status": "User organization input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Training and enablement requirement": {
+        "status": "User organization input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Accessibility and localization": {
+        "status": "User organization input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Legacy process and tool retirement": {
+        "status": "User organization input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Benefit durability and continuous improvement": {
+        "status": "User organization input required",
+        "rationale": "v3 addition: directional baseline from public vendor material as of 2026-11-14; validate with current documentation and references.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      }
+    },
+    "career": {
+      "Labour-market demand": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Pay premium": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Skill longevity and vendor trajectory": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Skill transferability": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Learning resources and certification": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Community size and activity": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Open-source engagement": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      },
+      "Hands-on access": {
+        "status": "Baseline—validate",
+        "rationale": "Career upside directional estimate (2026-11-14) from job-posting share, salary guides, certification and open-source activity; validate with local labour-market data.",
+        "source": "v3 additions (2026-11-14)",
+        "updated": "2026-11-14"
+      }
+    }
+  }
+}
